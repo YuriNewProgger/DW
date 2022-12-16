@@ -1,0 +1,23 @@
+.outterContainerComments{
+    width: 55%;
+}
+
+.titleComments{
+    color: #E8B98B;
+    font-size: 1.5em;
+    margin-left: 3%;
+}
+
+.numberAndAddress{
+    font-size: 1.5em;
+    margin-left: 3%;
+    margin-top: 1%;
+    color: #BBBBBB;
+    border: 2px solid #E8B98B;
+    border-radius: 5px;
+    width: 95%;
+}
+
+.numberAndAddress>div{
+    margin: 1%;
+}

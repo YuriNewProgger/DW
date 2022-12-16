@@ -1,0 +1,38 @@
+.outterContainerDiscription{
+    width: 100%;
+}
+
+.hedaerText{
+    text-align: center;
+    color: #BBBBBB;
+    font-size: 4em;
+    margin: 0 7%;
+}
+
+.textDiscription{
+    color: #BBBBBB;
+    margin: 3% 7%;
+    font-size: 1.5em;
+}
+
+.textDiscription>ul>li{
+    color: white;
+}
+
+.textDiscription>button{
+    border: 2px solid #E8B98B;
+    border-radius: 5px;
+    background-color: transparent;
+    color: #E8B98B;
+    padding: 5px 20px;
+    font-size: 1em;
+    margin-top: 5%;
+}
+
+.textDiscription>button:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+}
+.textDiscription>button:active{
+    transform: scale(0.95);
+}

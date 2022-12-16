@@ -1,0 +1,55 @@
+.outterContainerHedaer{
+    display: grid;
+    grid-template-rows: 10vh;
+    grid-template-columns: 33.3% 33.3% 33.3%;
+    border-bottom: 1px solid #373737;
+}
+
+.logoText{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    font-size: 3em;
+    margin-left: 20px;
+    background: linear-gradient(180deg, #E8B98B 40%, #000000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #E8B98B;
+    font-family: 'Inria Serif', serif;
+}
+
+.logoText>span:hover{
+    cursor: pointer;
+}
+
+.navContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btnContainer{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.btnSign{
+    border: 2px solid #373737;
+    border-radius: 5px;
+    background-color: transparent;
+    color: white;
+    padding: 5px 20px;
+    font-size: 1em;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+.btnSign:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.btnSign:active{
+    transform: scale(0.95);
+}

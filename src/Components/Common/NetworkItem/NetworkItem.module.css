@@ -1,0 +1,23 @@
+.outterContainerMassenger{
+    display: flex;
+    align-items: center;
+    margin-top: 1%;
+}
+
+.outterContainerMassenger>img{
+    width: 30px;
+}
+.outterContainerMassenger>img:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+.outterContainerMassenger>img:active{
+    transform: scale(0.95);
+}
+
+
+.outterContainerMassenger>span{
+    color: #BBBBBB;
+    margin-left: 2%;
+    font-size: 1.5em;
+}

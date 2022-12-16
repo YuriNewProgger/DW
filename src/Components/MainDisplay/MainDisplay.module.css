@@ -1,0 +1,26 @@
+.outterContainerMainDisplay{
+    height: 89vh;
+}
+
+.imgAndDiscription{
+    display: flex;
+}
+
+.imgAndDiscription>div{
+    width: 50%;
+}
+
+.bgWallOutterContainer{
+    width: 50%;
+    height: 50vh;
+    overflow: hidden;
+}
+
+.bgWallOutterContainer>img{
+    width: 100%;
+}
+
+.massengersContainer{
+    display: flex;
+    margin-top: 5%;
+}
