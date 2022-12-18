@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import s from './Header.module.css';
 import { Navbar } from "../Navbar/Navbar";
 import { useNavigate } from "react-router-dom";
-import { Modal, useMantineTheme } from '@mantine/core';
+import { Modal, useMantineTheme, Avatar } from '@mantine/core';
 import { Auth } from "./Auth/Auth";
 import { useDispatch, useSelector } from "react-redux";
 import { getTypeAuth, getUser } from "../../Redux/userSlice";
+
 
 export const Header = () => {
 
@@ -13,6 +14,7 @@ export const Header = () => {
     const theme = useMantineTheme();
     const dispatch = useDispatch();
     const typeAuth = useSelector(getTypeAuth);
+    const currentUser = useSelector(getUser);
 
     const [opened, setOpened] = useState(false);
 
@@ -25,9 +27,12 @@ export const Header = () => {
                 <Navbar />
             </div>
             <div className={s.btnContainer}>
-                <button className={s.btnSign} onClick={() => setOpened(true)}>
-                    Войти
-                </button>
+                {
+                    currentUser === '' ? <button className="btnCommon" onClick={() => setOpened(true)}>Войти</button> :
+                    <div className={`textCommon ${s.currentUserInitials}`}>
+                        {<Avatar color="cyan" radius="xl" src={null} size='lg' alt={`${currentUser.name} ${currentUser.surname}`}>{currentUser.name[0]}{currentUser.surname[0]}</Avatar>}
+                    </div>
+                }
             </div>
             <Modal
                 styles={{

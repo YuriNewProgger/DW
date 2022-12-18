@@ -1,14 +1,15 @@
 .outterContainer{
-    color: white;
+    color: #bbb;
     display: flex;
-    font-size: 24px;
+    font-size: 1.6em;
+    /* font-size: 24px; */
 }
 
 .outterContainer>a{
     margin: 0 5px;
     font-family: 'Inria Serif', serif;
     text-decoration: none;
-    color: white;
+    color: #bbb;
 }
 
 .outterContainer>a:hover{
