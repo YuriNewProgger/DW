@@ -1,0 +1,8 @@
+.outterContainerBtnSignUp{
+    display: flex;
+    justify-content: center;
+}
+
+.outterContainerBtnSignUp>button{
+    margin-top: 20px;
+}

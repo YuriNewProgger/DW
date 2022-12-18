@@ -1,0 +1,25 @@
+
+.btnForgetPasswordOutterContainer{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.btnForgetPassword{
+    background-color: transparent;
+    border: 1px solid transparent;
+    color: #BBBBBB;
+}
+
+.btnForgetPassword:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+.btnForgetPassword:active{
+    transform: scale(0.95);
+}
+
+.btnControls{
+    display: flex;
+    justify-content: center;
+}

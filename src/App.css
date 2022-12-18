@@ -1,3 +1,23 @@
 .App{
   
 }
+
+.btnCommon{
+    border: 2px solid #373737;
+    border-radius: 5px;
+    background-color: transparent;
+    color: #BBBBBB;
+    padding: 5px 20px;
+    font-size: 1em;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+.btnCommon:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.btnCommon:active{
+    transform: scale(0.95);
+}
