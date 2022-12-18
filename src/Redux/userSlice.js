@@ -12,7 +12,7 @@ export const userSlice = createSlice({
         setUser: (state, action) => {
             state.user = action.payload;
         },
-        changeTypeAuth: (state, action) => {
+        setTypeAuth: (state, action) => {
             state.typeAuth = action.payload.typeAuth
         }
     }
@@ -21,5 +21,5 @@ export const userSlice = createSlice({
 export const getUser = (state) => state.user.currentUser;
 export const getTypeAuth = (state) => state.user.typeAuth;
 
-export const { setUser, changeTypeAuth } = userSlice.actions;
+export const { setUser, setTypeAuth } = userSlice.actions;
 export default userSlice.reducer;

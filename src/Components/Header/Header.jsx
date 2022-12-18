@@ -4,11 +4,15 @@ import { Navbar } from "../Navbar/Navbar";
 import { useNavigate } from "react-router-dom";
 import { Modal, useMantineTheme } from '@mantine/core';
 import { Auth } from "./Auth/Auth";
+import { useDispatch, useSelector } from "react-redux";
+import { getTypeAuth, getUser } from "../../Redux/userSlice";
 
 export const Header = () => {
 
     const navigate = useNavigate();
     const theme = useMantineTheme();
+    const dispatch = useDispatch();
+    const typeAuth = useSelector(getTypeAuth);
 
     const [opened, setOpened] = useState(false);
 
@@ -35,7 +39,7 @@ export const Header = () => {
                 opened={opened}
                 onClose={() => setOpened(false)}
                 centered
-                title="Вход">
+                title={typeAuth === 'signin' ? 'Вход' : 'Регистрация'}>
                 <Auth/>
             </Modal>
         </div>

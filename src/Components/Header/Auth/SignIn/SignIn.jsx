@@ -2,14 +2,14 @@ import React from "react";
 import s from './SignIn.module.css';
 import { TextInput } from '@mantine/core';
 import { useDispatch } from 'react-redux';
-import { changeTypeAuth } from "../../../../Redux/userSlice";
+import { setTypeAuth } from "../../../../Redux/userSlice";
 
 export const SignIn = () => {
     
     const dispatch = useDispatch();
 
-    const doChangeSignIn = () => {
-        dispatch(changeTypeAuth({typeAuth: 'signup'}));
+    const setSignUpTypeAuth = () => {
+        dispatch(setTypeAuth({typeAuth: 'signup'}));
     }
 
     return (
@@ -22,7 +22,7 @@ export const SignIn = () => {
             </div>
 
             <div className={s.btnControls}>
-                <button className="btnCommon" onClick={doChangeSignIn}>
+                <button className="btnCommon" onClick={setSignUpTypeAuth}>
                     Регистрация
                 </button>
                 <button className="btnCommon" >

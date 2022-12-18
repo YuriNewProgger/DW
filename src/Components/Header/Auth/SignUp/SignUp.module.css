@@ -6,3 +6,9 @@
 .outterContainerBtnSignUp>button{
     margin-top: 20px;
 }
+
+.btnControls{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}

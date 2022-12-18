@@ -1,8 +1,18 @@
 import React from "react";
 import s from './SignUp.module.css';
 import { TextInput } from '@mantine/core';
+import { useDispatch } from "react-redux";
+import { setTypeAuth } from "../../../../Redux/userSlice";
 
 export const SignUp = () => {
+
+    const dispatch = useDispatch();
+
+    const setSignInTypeAuth = () => {
+        dispatch(setTypeAuth({typeAuth: 'signin'}));        
+    }
+
+
     return (
         <div>
             <TextInput placeholder="Имя" label="Имя" withAsterisk styles={{
@@ -30,7 +40,15 @@ export const SignUp = () => {
                     label: { color: '#BBBBBB' }
                 }}/>
             <div className={s.outterContainerBtnSignUp}>
-                <button className="btnCommon">Регистрация</button>
+                {/* <button className="btnCommon">Регистрация</button> */}
+                <div className={s.btnControls}>
+                <button className="btnCommon">
+                    Регистрация
+                </button>
+                <button className="btnCommon" onClick={setSignInTypeAuth}>
+                    Войти
+                </button>
+            </div>
             </div>
         </div>
     )

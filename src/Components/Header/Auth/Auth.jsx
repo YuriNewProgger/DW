@@ -16,11 +16,7 @@ export const Auth = () => {
 
     return (
         <div className={s.outterContainerAuth}>
-            {
-                typeAuth === 'signin' ? <SignIn /> : <SignUp/>
-            }
-            {/* <SignIn /> */}
-            {/* <SignUp/> */}
+            {typeAuth === 'signin' ? <SignIn /> : <SignUp/>}
         </div>
     )
 }
