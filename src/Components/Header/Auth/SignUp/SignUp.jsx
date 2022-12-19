@@ -42,10 +42,10 @@ export const SignUp = () => {
             <div className={s.outterContainerBtnSignUp}>
                 {/* <button className="btnCommon">Регистрация</button> */}
                 <div className={s.btnControls}>
-                <button className="btnCommon">
+                <button className="btnCommon hoverElement activeElement">
                     Регистрация
                 </button>
-                <button className="btnCommon" onClick={setSignInTypeAuth}>
+                <button className="btnCommon hoverElement activeElement" onClick={setSignInTypeAuth}>
                     Войти
                 </button>
             </div>

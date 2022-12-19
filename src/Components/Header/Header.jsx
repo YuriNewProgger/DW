@@ -6,10 +6,11 @@ import { Modal, useMantineTheme, Avatar } from '@mantine/core';
 import { Auth } from "./Auth/Auth";
 import { useDispatch, useSelector } from "react-redux";
 import { getTypeAuth, getUser } from "../../Redux/userSlice";
+import { ClassNames } from "@emotion/react";
 
 
 export const Header = () => {
-
+    
     const navigate = useNavigate();
     const theme = useMantineTheme();
     const dispatch = useDispatch();
@@ -28,8 +29,8 @@ export const Header = () => {
             </div>
             <div className={s.btnContainer}>
                 {
-                    currentUser === '' ? <button className="btnCommon" onClick={() => setOpened(true)}>Войти</button> :
-                    <div className={`textCommon ${s.currentUserInitials}`}>
+                    currentUser === '' ? <button className="btnCommon hoverElement activeElement" onClick={() => setOpened(true)}>Войти</button> :
+                    <div className={`textCommon ${s.currentUserInitials} hoverElement activeElement`}>
                         {<Avatar color="cyan" radius="xl" src={null} size='lg' alt={`${currentUser.name} ${currentUser.surname}`}>{currentUser.name[0]}{currentUser.surname[0]}</Avatar>}
                     </div>
                 }

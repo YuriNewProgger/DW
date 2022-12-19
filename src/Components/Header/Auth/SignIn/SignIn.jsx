@@ -22,10 +22,10 @@ export const SignIn = () => {
             </div>
 
             <div className={s.btnControls}>
-                <button className="btnCommon" onClick={setSignUpTypeAuth}>
+                <button className="btnCommon hoverElement activeElement" onClick={setSignUpTypeAuth}>
                     Регистрация
                 </button>
-                <button className="btnCommon" >
+                <button className="btnCommon hoverElement activeElement" >
                     Войти
                 </button>
             </div>

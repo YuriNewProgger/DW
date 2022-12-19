@@ -2,8 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 import { userMock } from './../MockData/UserMock';
 
 const initialState = {
-    // currentUser: '',
-    currentUser: userMock,
+    currentUser: '',
+    //currentUser: userMock,
     typeAuth: 'signin'
 }
 
