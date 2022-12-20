@@ -1,0 +1,24 @@
+.outterContainerCard{
+    width: 33.3%;
+    height: 50vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.outterContainerCard>img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.titleAndPrice{
+    position: absolute;
+    color: white;
+    left: 5%;
+    top: 5%;
+    font-size: 1.5em;
+}

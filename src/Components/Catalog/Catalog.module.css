@@ -16,15 +16,20 @@
     align-items: center;
 }
 
+.typeCarItem{
+    color: #bbb;
+    text-align: center;
+}
+.typeCarItem:hover{
+    color: #E8B98B;
+}
+
 .carClasses>div{
     margin: 0 10px;
 }
 
 .carsList{
-    background-color: gray;
-    width: 100%;
-    height: 74vh;
-    overflow-y: auto;
     display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
-
