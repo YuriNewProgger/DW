@@ -1,0 +1,30 @@
+.outterContainerCatalog>hr{
+    border: 0.5px solid #373737;
+}
+
+.titleSection{
+    color: #E8B98B;
+    font-size: 2em;
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.carClasses{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carClasses>div{
+    margin: 0 10px;
+}
+
+.carsList{
+    background-color: gray;
+    width: 100%;
+    height: 74vh;
+    overflow-y: auto;
+    display: flex;
+}
+

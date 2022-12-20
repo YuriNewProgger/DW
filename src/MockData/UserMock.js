@@ -10,5 +10,6 @@ export const userMock = {
     photo: '',
     email: 'dmitryi@gmail.com',
     login : 'test',
-    password: 'test'
+    password: 'test',
+    role: 'aldmin'
 }
