@@ -14,6 +14,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 15px 0;
 }
 
 .typeCarItem{
@@ -30,6 +31,6 @@
 
 .carsList{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap: wrap;
 }

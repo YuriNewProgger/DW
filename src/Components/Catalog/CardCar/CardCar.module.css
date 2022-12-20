@@ -1,11 +1,12 @@
 .outterContainerCard{
-    width: 33.3%;
+    width: 33%;
     height: 50vh;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
+    margin: 0.3% 0;
 }
 
 .outterContainerCard>img{
