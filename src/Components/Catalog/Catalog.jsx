@@ -3,11 +3,10 @@ import s from './Catalog.module.css';
 import { CardCar } from "./CardCar/CardCar";
 import { ScrollArea } from '@mantine/core';
 import businessList from "../../MockData/BussinessCarsMock";
-import economList from "../../MockData/EconomCarsMock";
+// import economList from "../../MockData/EconomCarsMock";
 import carsTypes from "../../Utils/CarsTypes/CarsTypes";
 
 export const Catalog = () => {
-
 
     return (
         <div className={s.outterContainerCatalog}>
@@ -27,7 +26,7 @@ export const Catalog = () => {
             </div>
             <ScrollArea style={{ height: '70vh', width: '100%' }}>
                 <div className={s.carsList}>{
-                    economList.map(item =>
+                    businessList.cars.map(item =>
                         <CardCar key={item.title} title={item.title} price={item.price} photo={item.photo} />
                     )
                 }
