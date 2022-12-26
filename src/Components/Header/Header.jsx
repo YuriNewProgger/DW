@@ -19,6 +19,12 @@ export const Header = () => {
 
     const [opened, setOpened] = useState(false);
 
+    useEffect(() => {
+        if(currentUser !== ''){
+            setOpened(false);
+        }
+    }, [currentUser]);
+
     return (
         <div className={s.outterContainerHedaer}>
             <div className={s.logoText} onClick={() => navigate('/')}>
