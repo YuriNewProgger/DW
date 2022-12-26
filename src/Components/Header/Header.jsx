@@ -7,10 +7,11 @@ import { Auth } from "./Auth/Auth";
 import { useDispatch, useSelector } from "react-redux";
 import { getTypeAuth, getUser } from "../../Redux/userSlice";
 import { ClassNames } from "@emotion/react";
+import { PopMenu } from "./PopOverMenu/PopMenu";
 
 
 export const Header = () => {
-    
+
     const navigate = useNavigate();
     const theme = useMantineTheme();
     const dispatch = useDispatch();
@@ -18,9 +19,10 @@ export const Header = () => {
     const currentUser = useSelector(getUser);
 
     const [opened, setOpened] = useState(false);
+    const [openedPopMenu, setOpenedPopMenu] = useState(false);
 
     useEffect(() => {
-        if(currentUser !== ''){
+        if (currentUser !== '') {
             setOpened(false);
         }
     }, [currentUser]);
@@ -36,14 +38,15 @@ export const Header = () => {
             <div className={s.btnContainer}>
                 {
                     currentUser === '' ? <button className="btnCommon hoverElement activeElement" onClick={() => setOpened(true)}>Войти</button> :
-                    <div className={`textCommon ${s.currentUserInitials} hoverElement activeElement`}>
-                        {<Avatar color="cyan" radius="xl" src={null} size='lg' alt={`${currentUser.name} ${currentUser.surname}`}>{currentUser.name[0]}{currentUser.surname[0]}</Avatar>}
-                    </div>
+                        <div className={openedPopMenu ? `textCommon ${s.currentUserInitials}` : `textCommon ${s.currentUserInitials} hoverElement activeElement`}>
+                            <PopMenu isOpen={openedPopMenu} role={currentUser.title}/> 
+                            {<Avatar onClick={() => setOpenedPopMenu(!openedPopMenu)} color="cyan" radius="xl" src={null} size='lg' alt={`${currentUser.name} ${currentUser.surname}`}>{currentUser.name[0]}{currentUser.surname[0]}</Avatar>}
+                        </div>
                 }
             </div>
             <Modal
                 styles={{
-                    modal: { backgroundColor: '#1E1E1E', border: '1px solid #373737', color: '#BBBBBB'}
+                    modal: { backgroundColor: '#1E1E1E', border: '1px solid #373737', color: '#BBBBBB' }
                 }}
                 overlayColor={true ? theme.colors.dark[9] : theme.colors.gray[2]}
                 overlayOpacity={0.55}
@@ -52,7 +55,7 @@ export const Header = () => {
                 onClose={() => setOpened(false)}
                 centered
                 title={typeAuth === 'signin' ? 'Вход' : 'Регистрация'}>
-                <Auth/>
+                <Auth />
             </Modal>
         </div>
     )

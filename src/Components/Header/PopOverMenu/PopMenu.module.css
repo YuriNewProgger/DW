@@ -1,0 +1,22 @@
+.outterContainerPopMenu{
+    border: 2px solid #373737;
+    border-radius: 5px;
+    background-color: #1E1E1E;
+    color: #BBBBBB;
+    padding: 5px 20px;
+    font-size: 0.7em;
+    font-weight: bold;
+    margin-top: 20px;
+    z-index: 1000;
+}
+
+.outterContainerPopMenuVisible{
+    display: block;
+}
+.outterContainerPopMenuNoVisible{
+    display: none;
+}
+
+.outterContainerPopMenu>div{
+    margin: 5px 0;
+}
