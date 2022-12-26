@@ -20,21 +20,20 @@ export const userSlice = createSlice({
     },
     extraReducers(builder){
         builder
-            .addCase(loginPost.pending, (state, action)=> {
+            .addCase(loginQuery.pending, (state, action)=> {
                 state.status = 'loading';
             })
-            .addCase(loginPost.fulfilled, (state, action)=> {
+            .addCase(loginQuery.fulfilled, (state, action)=> {
                 state.status = 'succeeded';
                 state.currentUser = action.payload;
             })
-            .addCase(loginPost.rejected, (state, action)=> {
+            .addCase(loginQuery.rejected, (state, action)=> {
                 state.status = 'failed';
             })
     }
 })
 
-export const loginPost = createAsyncThunk('user/loginPost', async(value) => {
-    console.log(JSON.stringify(value));
+export const loginQuery = createAsyncThunk('user/loginPost', async(value) => {
     const response = await fetch('http://127.0.0.1:5000/api/login', {
         method: 'POST',
         headers: {
@@ -43,6 +42,24 @@ export const loginPost = createAsyncThunk('user/loginPost', async(value) => {
           },
         body: JSON.stringify(value)
     });
+    return  response.json();
+})
+
+export const registrationQuery = createAsyncThunk('user/registrationPost', async(value) => {
+    console.log(JSON.stringify(value));
+    const response = await fetch('http://127.0.0.1:5000/api/reg', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+        body: JSON.stringify(value)
+    });
+
+    console.log(response.status);
+    const t = await response.text();
+    console.log(t);
+
     return  response.json();
 })
 

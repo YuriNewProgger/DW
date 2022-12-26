@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import s from './SignIn.module.css';
 import { TextInput } from '@mantine/core';
 import { useDispatch } from 'react-redux';
-import { setTypeAuth, loginPost } from "../../../../Redux/userSlice";
+import { setTypeAuth, loginQuery } from "../../../../Redux/userSlice";
 import { useSelector } from 'react-redux';
 
 export const SignIn = () => {
@@ -21,7 +21,7 @@ export const SignIn = () => {
             login: _login, 
             password: _password
         }
-        dispatch(loginPost(value));
+        dispatch(loginQuery(value));
     }
 
     return (
