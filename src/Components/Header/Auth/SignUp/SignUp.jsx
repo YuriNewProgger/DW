@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import s from './SignUp.module.css';
 import { TextInput } from '@mantine/core';
 import { useDispatch } from "react-redux";
-import { registrationQuery, setTypeAuth } from "../../../../Redux/userSlice";
+import { loginQuery, registrationQuery, setTypeAuth, setUser } from "../../../../Redux/userSlice";
 
 export const SignUp = () => {
 
@@ -17,7 +17,6 @@ export const SignUp = () => {
     const [_password, setPassword] = useState('');
 
     const dispatch = useDispatch();
-
     useEffect(() => {
         return () => {
             dispatch(setTypeAuth({ typeAuth: 'signin' }));
@@ -28,9 +27,9 @@ export const SignUp = () => {
     const registration = () => {
         const newUser = {
             name: _name,
-            surName: _surName,
+            surname: _surName,
             patronymic: _patronymic,
-            snPassport: _snPassport,
+            snpassport: _snPassport,
             age: _age,
             phone: _phone,
             email: _email,
@@ -38,7 +37,11 @@ export const SignUp = () => {
             password: _password
         }
 
-        dispatch(registrationQuery(newUser));
+        dispatch(registrationQuery(newUser)).unwrap().then(resp => {
+            if(resp.status === 200){
+                dispatch(loginQuery({login: newUser.login, password: newUser.password}));                
+            }
+        });
     }
 
     return (
@@ -91,7 +94,7 @@ export const SignUp = () => {
             <div className={s.outterContainerBtnSignUp}>
                 <div className={s.btnControls}>
                     <button className="btnCommon hoverElement activeElement" onClick={registration}>
-                        Регестрироваться
+                        Регистрация
                     </button>
                 </div>
             </div>

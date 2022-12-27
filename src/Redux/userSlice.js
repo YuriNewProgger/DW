@@ -12,7 +12,7 @@ export const userSlice = createSlice({
     initialState,
     reducers: {
         setUser: (state, action) => {
-            state.user = action.payload;
+            state.currentUser = action.payload;
         },
         setTypeAuth: (state, action) => {
             state.typeAuth = action.payload.typeAuth
@@ -46,7 +46,6 @@ export const loginQuery = createAsyncThunk('user/loginPost', async(value) => {
 })
 
 export const registrationQuery = createAsyncThunk('user/registrationPost', async(value) => {
-    console.log(JSON.stringify(value));
     const response = await fetch('http://127.0.0.1:5000/api/reg', {
         method: 'POST',
         headers: {
@@ -56,11 +55,7 @@ export const registrationQuery = createAsyncThunk('user/registrationPost', async
         body: JSON.stringify(value)
     });
 
-    console.log(response.status);
-    const t = await response.text();
-    console.log(t);
-
-    return  response.json();
+    return response;
 })
 
 export const getUser = (state) => state.user.currentUser;
