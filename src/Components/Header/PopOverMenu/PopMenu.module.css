@@ -5,7 +5,7 @@
     color: #BBBBBB;
     padding: 5px 20px;
     font-size: 0.7em;
-    margin-top: 20px;
+    margin-top: 60px;
     z-index: 1000;
 }
 
@@ -17,7 +17,11 @@
 }
 
 .outterContainerPopMenu>div{
-    margin: 5px 0;
+    /* margin: 5px 0; */
+}
+
+.outterContainerInfoUser{
+    margin-bottom: 20px;
 }
 
 .linkPA>a{
