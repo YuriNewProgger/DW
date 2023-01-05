@@ -18,7 +18,7 @@ export const PopMenu = (props) => {
     return (
         <div className={props.isOpen ? `${s.outterContainerPopMenu} ${s.outterContainerPopMenuVisible}` : s.outterContainerPopMenuNoVisible}>
             <div className={s.outterContainerInfoUser}>
-                <div>{user.surname} {user.name}</div>
+                <div>{user.name} {user.surname}</div>
                 <div>{user.email}</div>
                 <hr />
             </div>

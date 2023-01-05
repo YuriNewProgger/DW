@@ -6,8 +6,8 @@ import { Modal, useMantineTheme, Avatar } from '@mantine/core';
 import { Auth } from "./Auth/Auth";
 import { useDispatch, useSelector } from "react-redux";
 import { getTypeAuth, getUser } from "../../Redux/userSlice";
-import { ClassNames } from "@emotion/react";
 import { PopMenu } from "./PopOverMenu/PopMenu";
+import { getAllCars } from "../../Redux/carSlice";
 
 
 export const Header = () => {
@@ -26,6 +26,12 @@ export const Header = () => {
             setOpened(false);
         }
     }, [currentUser]);
+
+    //Загрузка всех автомобилей, при загрузке этого компнонента. 
+    //TODO Посмотреть иные способы начальной инициализации
+    useEffect(() => {
+        dispatch(getAllCars()).unwrap().then(resp => console.log(resp));
+    }, []);
 
     return (
         <div className={s.outterContainerHedaer}>

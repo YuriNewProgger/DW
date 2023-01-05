@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
+import { loginPostQuery, regPostQuery } from './../Api/api';
 
 const initialState = {
     currentUser: '',
@@ -34,7 +34,7 @@ export const userSlice = createSlice({
 })
 
 export const loginQuery = createAsyncThunk('user/loginPost', async(value) => {
-    const response = await fetch('http://127.0.0.1:5000/api/login', {
+    const response = await fetch(loginPostQuery, {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
@@ -46,7 +46,7 @@ export const loginQuery = createAsyncThunk('user/loginPost', async(value) => {
 })
 
 export const registrationQuery = createAsyncThunk('user/registrationPost', async(value) => {
-    const response = await fetch('http://127.0.0.1:5000/api/reg', {
+    const response = await fetch(regPostQuery, {
         method: 'POST',
         headers: {
             'Accept': 'application/json',

@@ -1,11 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 import economList from '../MockData/EconomCarsMock';
 import businessList from '../MockData/BussinessCarsMock';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { allCarsGetQuery } from '../Api/api';
 
 const initialState = {
-    // allCars: [economList, businessList],
-    // currentTypeCar: 'econom',
-    // currentListCar: this.allCars.find(item => item.title = this.currentTypeCar)[0]
     allCars: '',
     currentTypeCar: 'econom',
     currentListCar: ''
@@ -20,6 +19,12 @@ export const carSlice = createSlice({
         }
     }
 })
+
+export const getAllCars = createAsyncThunk('car/GetAllCars', async() => {
+    const resp = await fetch(allCarsGetQuery);
+    return resp.json();
+})
+
 
 export const getCurrentTypeCar = (state) => state.currentTypeCar;
 
