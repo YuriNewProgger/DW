@@ -2,6 +2,7 @@ import React from "react";
 import s from './AdminPanel.module.css';
 
 export const AdminPanel = () => {
+    
     return (
         <div className={s.outterContainerAdminPanel}>
             <div className={s.outterContainerCategories}>
