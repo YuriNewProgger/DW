@@ -16,17 +16,28 @@ export const carSlice = createSlice({
     reducers: {
         setCurrentTypeCar: (state, action) => {
             state.currentTypeCar = action.currentTypeCar;
+        },
+        setAllCars: (state, action) => {
+            state.allCars = action.payload;
         }
     }
 })
 
-export const getAllCars = createAsyncThunk('car/GetAllCars', async() => {
-    const resp = await fetch(allCarsGetQuery);
-    return resp.json();
-})
+// export const getAllCars = createAsyncThunk('car/GetAllCars', async() => {
+//     const resp = await fetch(allCarsGetQuery);
+//     return resp.json();
+// })
 
+
+//Начальная инициализация
+export async function fetchTodos(dispatch, getState) {
+    const response = await fetch(allCarsGetQuery);
+    const objs = await response.json();
+    dispatch(setAllCars(objs));
+}
 
 export const getCurrentTypeCar = (state) => state.currentTypeCar;
+export const getCars = (state) => state.car.allCars;
 
-export const { setCurrentTypeCar } = carSlice.actions;
+export const { setCurrentTypeCar, setAllCars } = carSlice.actions;
 export default carSlice.reducer;

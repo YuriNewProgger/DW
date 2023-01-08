@@ -1,0 +1,8 @@
+.outterContainerCarItem{
+    display: flex;
+    justify-content: center;
+}
+
+.outterContainerCarItem>div{
+    margin: 0 10px;
+}
