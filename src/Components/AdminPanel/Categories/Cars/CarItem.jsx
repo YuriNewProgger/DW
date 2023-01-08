@@ -21,6 +21,8 @@ export const CarItem = (props) => {
             <TextInput value={_photo ?? " "} onChange={(e) => setPhoto(e.currentTarget.value)} placeholder="Фото" />
             <TextInput value={_discription ?? ""} onChange={(e) => setDiscription(e.currentTarget.value)} placeholder="Описание" />
             <Select value={props.carElement.type.title} data={_types}/>
+            <button>Delete</button>
+            <button>Save</button>
         </div>
     )
 }

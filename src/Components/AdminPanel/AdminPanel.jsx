@@ -1,16 +1,23 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import s from './AdminPanel.module.css';
 import { useSelector } from 'react-redux';
 import { getCars } from "../../Redux/carSlice";
 import { CarItem } from "./Categories/Cars/CarItem";
+import { Modal, useMantineTheme } from '@mantine/core';
+import { AddCar } from "./Categories/Cars/AddCar/AddCar";
 
 export const AdminPanel = () => {
 
-    const _cars = useSelector(getCars);
+    const [isOpenAddCarWindow, setIsOpenAddCarWindow] = useState(false);
 
-    useEffect(() => {
-        console.log(_cars);
-    }, []);
+    const theme = useMantineTheme();
+    const _cars = useSelector(getCars);
+    const renderItems = _cars.allCars.map(element => <CarItem key={element.id} carElement={element} allTypes={_cars.allTypes} />);
+
+
+    const addCar = () => {
+        setIsOpenAddCarWindow(true);
+    }
 
     return (
         <div className={s.outterContainerAdminPanel}>
@@ -20,14 +27,28 @@ export const AdminPanel = () => {
                 <button className="btnCommon hoverElement activeElement">Пользователи</button>
                 <button className="btnCommon hoverElement activeElement">Чёрный список</button>
             </div>
-            {/* <div>
-                <button>Добавить</button>
-            </div> */}
+            <div>
+                <button onClick={addCar}>Добавить</button>
+            </div>
             <div className={s.selectedItemsContainer}>
                 {
-                    _cars.allCars.map(element => <CarItem key={element.id} carElement={element} allTypes={_cars.allTypes}/>)
+                    //_cars.allCars.map(element => <CarItem key={element.id} carElement={element} allTypes={_cars.allTypes}/>)
+                    renderItems
                 }
             </div>
+            <Modal
+                styles={{
+                    modal: { backgroundColor: '#1E1E1E', border: '1px solid #373737', color: '#BBBBBB' }
+                }}
+                overlayColor={true ? theme.colors.dark[9] : theme.colors.gray[2]}
+                overlayOpacity={0.55}
+                overlayBlur={3}
+                centered
+                opened={isOpenAddCarWindow}
+                onClose={() => setIsOpenAddCarWindow(false)}
+                title="Добавление нового автомобиля">
+                <AddCar allTypes={_cars.allTypes}/>
+            </Modal>
 
         </div>
     )
