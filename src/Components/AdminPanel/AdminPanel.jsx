@@ -38,7 +38,6 @@ export const AdminPanel = () => {
                 <button className={`btnCommon hoverElement activeElement btnMarginTopDown`} onClick={addCar}>Добавить</button>
             </div>
             <div className={s.selectedItemsContainer}>
-                {console.log("41",_cars.length)}
                 {
                     _cars.length !== 0 ? _cars.allCars.map(element => <CarItem key={element.id} id={element.id} carElement={element} allTypes={_cars.allTypes}/>) :
                     <></>

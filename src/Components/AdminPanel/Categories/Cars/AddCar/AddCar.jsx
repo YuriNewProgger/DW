@@ -22,7 +22,7 @@ export const AddCar = (props) => {
 
     const _types = [];
     for (let item of props.allTypes)
-        _types.push({ value: item.title, label: item.title });
+        _types.push({ value: item.interpretation, label: item.interpretation });
 
 
     const saveNewCar = () => {

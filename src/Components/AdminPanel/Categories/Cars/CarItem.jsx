@@ -11,16 +11,16 @@ export const CarItem = (props) => {
 
     const _types = [];
     for(let item of props.allTypes)
-        _types.push({ value: item.title, label: item.title });
+        _types.push({ value: item.interpretation, label: item.interpretation });
 
 
     return (
         <div className={s.outterContainerCarItem}>
-            <TextInput value={_title ?? " "} onChange={(e) => setTitle(e.currentTarget.value)} placeholder="Название" />
-            <TextInput value={_price ?? " "} onChange={(e) => setPrice(e.currentTarget.value)} placeholder="Цена" />
+            <TextInput  value={_title ?? " "} onChange={(e) => setTitle(e.currentTarget.value)} placeholder="Название" />
+            <TextInput  value={_price ?? " "} onChange={(e) => setPrice(e.currentTarget.value)} placeholder="Цена" />
             <Textarea value={_photo ?? " "} onChange={(e) => setPhoto(e.currentTarget.value)} placeholder="Фото" />
-            <TextInput value={_discription ?? ""} onChange={(e) => setDiscription(e.currentTarget.value)} placeholder="Описание" />
-            <Select value={props.carElement.type.title} data={_types}/>
+            <TextInput  value={_discription ?? ""} onChange={(e) => setDiscription(e.currentTarget.value)} placeholder="Описание" />
+            <Select  value={props.carElement.type.interpretation} data={_types}/>
             <button className="btnCommon hoverElement activeElement">Удалить</button>
             <button className="btnCommon hoverElement activeElement">Сохранить</button>
         </div>

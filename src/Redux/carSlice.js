@@ -7,7 +7,7 @@ import { addCarQuery } from './../Api/api';
 
 const initialState = {
     allCars: '',
-    currentTypeCar: 'econom',
+    currentTypeCar: 'Эконом',
     currentListCar: ''
 }
 
@@ -20,12 +20,15 @@ export const carSlice = createSlice({
         },
         setAllCars: (state, action) => {
             state.allCars = action.payload;
+        },
+        setCurrentTypeCar: (state, action) => {
+            state.currentTypeCar = action.payload;
         }
     }
 })
 
 
-export const addCar = createAsyncThunk('user/addCarPost', async(value) => {
+export const addCar = createAsyncThunk('car/addCarPost', async(value) => {
     const response = await fetch(addCarQuery, {
         method: 'POST',
         headers: {
@@ -46,7 +49,7 @@ export async function refreshCarList(dispatch, getState) {
     dispatch(setAllCars(objs));
 }
 
-export const getCurrentTypeCar = (state) => state.currentTypeCar;
+export const getCurrentTypeCar = (state) => state.car.currentTypeCar;
 export const getCars = (state) => state.car.allCars;
 
 export const { setCurrentTypeCar, setAllCars } = carSlice.actions;
