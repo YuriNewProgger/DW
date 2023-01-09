@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import s from './CarItem.module.css';
-import { TextInput, Select } from '@mantine/core';
+import { TextInput, Select, Textarea } from '@mantine/core';
 
 export const CarItem = (props) => {
 
@@ -18,11 +18,11 @@ export const CarItem = (props) => {
         <div className={s.outterContainerCarItem}>
             <TextInput value={_title ?? " "} onChange={(e) => setTitle(e.currentTarget.value)} placeholder="Название" />
             <TextInput value={_price ?? " "} onChange={(e) => setPrice(e.currentTarget.value)} placeholder="Цена" />
-            <TextInput value={_photo ?? " "} onChange={(e) => setPhoto(e.currentTarget.value)} placeholder="Фото" />
+            <Textarea value={_photo ?? " "} onChange={(e) => setPhoto(e.currentTarget.value)} placeholder="Фото" />
             <TextInput value={_discription ?? ""} onChange={(e) => setDiscription(e.currentTarget.value)} placeholder="Описание" />
             <Select value={props.carElement.type.title} data={_types}/>
-            <button>Delete</button>
-            <button>Save</button>
+            <button className="btnCommon hoverElement activeElement">Удалить</button>
+            <button className="btnCommon hoverElement activeElement">Сохранить</button>
         </div>
     )
 }

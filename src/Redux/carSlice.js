@@ -24,11 +24,6 @@ export const carSlice = createSlice({
     }
 })
 
-// export const getAllCars = createAsyncThunk('car/GetAllCars', async() => {
-//     const resp = await fetch(allCarsGetQuery);
-//     return resp.json();
-// })
-
 
 export const addCar = createAsyncThunk('user/addCarPost', async(value) => {
     const response = await fetch(addCarQuery, {
@@ -42,7 +37,9 @@ export const addCar = createAsyncThunk('user/addCarPost', async(value) => {
     return  response.json();
 })
 
-//Начальная инициализация
+export const deleteCar = createAsyncThunk()
+
+//Обновление списка автомобилей
 export async function refreshCarList(dispatch, getState) {
     const response = await fetch(allCarsGetQuery);
     const objs = await response.json();

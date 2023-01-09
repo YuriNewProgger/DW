@@ -22,6 +22,10 @@ export const AdminPanel = () => {
         setIsOpenAddCarWindow(true);
     }
 
+    const deleteCar = (_idCar) => {
+
+    }
+
     return (
         <div className={s.outterContainerAdminPanel}>
             <div className={s.outterContainerCategories}>
@@ -31,11 +35,13 @@ export const AdminPanel = () => {
                 <button className="btnCommon hoverElement activeElement">Чёрный список</button>
             </div>
             <div>
-                <button onClick={addCar}>Добавить</button>
+                <button className={`btnCommon hoverElement activeElement btnMarginTopDown`} onClick={addCar}>Добавить</button>
             </div>
             <div className={s.selectedItemsContainer}>
+                {console.log("41",_cars.length)}
                 {
-                    _cars.allCars.map(element => <CarItem key={element.id} carElement={element} allTypes={_cars.allTypes}/>)
+                    _cars.length !== 0 ? _cars.allCars.map(element => <CarItem key={element.id} id={element.id} carElement={element} allTypes={_cars.allTypes}/>) :
+                    <></>
                 }
             </div>
             <Modal
