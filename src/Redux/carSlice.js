@@ -3,6 +3,7 @@ import economList from '../MockData/EconomCarsMock';
 import businessList from '../MockData/BussinessCarsMock';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { allCarsGetQuery } from '../Api/api';
+import { addCarQuery } from './../Api/api';
 
 const initialState = {
     allCars: '',
@@ -29,8 +30,20 @@ export const carSlice = createSlice({
 // })
 
 
+export const addCar = createAsyncThunk('user/addCarPost', async(value) => {
+    const response = await fetch(addCarQuery, {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+        body: JSON.stringify(value)
+    });
+    return  response.json();
+})
+
 //Начальная инициализация
-export async function fetchTodos(dispatch, getState) {
+export async function refreshCarList(dispatch, getState) {
     const response = await fetch(allCarsGetQuery);
     const objs = await response.json();
     dispatch(setAllCars(objs));

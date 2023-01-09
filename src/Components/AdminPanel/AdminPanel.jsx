@@ -1,19 +1,22 @@
 import React, { useEffect, useState } from "react";
 import s from './AdminPanel.module.css';
-import { useSelector } from 'react-redux';
-import { getCars } from "../../Redux/carSlice";
+import { useSelector, useDispatch } from 'react-redux';
+import { refreshCarList, getCars } from "../../Redux/carSlice";
 import { CarItem } from "./Categories/Cars/CarItem";
 import { Modal, useMantineTheme } from '@mantine/core';
 import { AddCar } from "./Categories/Cars/AddCar/AddCar";
 
 export const AdminPanel = () => {
+    const dispatch = useDispatch();
 
     const [isOpenAddCarWindow, setIsOpenAddCarWindow] = useState(false);
 
     const theme = useMantineTheme();
     const _cars = useSelector(getCars);
-    const renderItems = _cars.allCars.map(element => <CarItem key={element.id} carElement={element} allTypes={_cars.allTypes} />);
 
+    useEffect(() => {
+        dispatch(refreshCarList);
+    }, []);
 
     const addCar = () => {
         setIsOpenAddCarWindow(true);
@@ -32,8 +35,7 @@ export const AdminPanel = () => {
             </div>
             <div className={s.selectedItemsContainer}>
                 {
-                    //_cars.allCars.map(element => <CarItem key={element.id} carElement={element} allTypes={_cars.allTypes}/>)
-                    renderItems
+                    _cars.allCars.map(element => <CarItem key={element.id} carElement={element} allTypes={_cars.allTypes}/>)
                 }
             </div>
             <Modal

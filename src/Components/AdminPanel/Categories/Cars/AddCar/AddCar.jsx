@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { TextInput, Select, Textarea } from '@mantine/core';
 import s from './AddCar.module.css';
+import { useDispatch } from 'react-redux';
+import { addCar, refreshCarList, setAllCars } from './../../../../../Redux/carSlice';
 
 
 export const AddCar = (props) => {
+    const dispatch = useDispatch();
 
     const [_title, setTitle] = useState("");
     const [_price, setPrice] = useState("");
@@ -23,18 +26,6 @@ export const AddCar = (props) => {
 
 
     const saveNewCar = () => {
-        //const _typeCar = props.allTypes.find(item => item.title === _typeCar);
-
-        // const newCar = {
-        //     title: _title,
-        //     price: _price,
-        //     photo: _photo,
-        //     discription: _discription,
-        //     typeCar: props.allTypes.find(item => item.title === _typeCar).id
-        // }
-
-        //console.log(newCar);
-
         _typeCar === "" ?  setTypeCarError("Ошибка! Значение поля не допустимо."):  setTypeCarError("");
         _title === "" ?  setTitleError("Ошибка! Значение поля не допустимо."):  setTitleError("");
         _price === "" ?  setPriceError("Ошибка! Значение поля не допустимо."):  setPriceError("");
@@ -44,8 +35,6 @@ export const AddCar = (props) => {
         if(_titleError !== "" || _priceError !== "" || _photoError !== "" || _discriptionError !== "" || _typeCarError !== "")
             return;
         
-            
-
         const newCar = {
             title: _title,
             price: _price,
@@ -54,7 +43,10 @@ export const AddCar = (props) => {
             typeCar: props.allTypes.find(item => item.title === _typeCar).id
         }
 
-        console.log(newCar);
+        dispatch(addCar(newCar)).unwrap().then(resp => {
+            if(resp === "Success")
+                dispatch(refreshCarList);
+        });
     }
 
     return (
