@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import s from './AdminPanel.module.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { refreshCarList, getCars, deleteCarFromBD, deleteCarFromState, deleteCarFromBDV2 } from "../../Redux/carSlice";
+import { refreshCarList, getCars, deleteCarFromBD, deleteCarFromState, deleteCarFromBDV2, updateCarToBD } from "../../Redux/carSlice";
 import { CarItem } from "./Categories/Cars/CarItem";
 import { Modal, useMantineTheme } from '@mantine/core';
 import { AddCar } from "./Categories/Cars/AddCar/AddCar";
@@ -28,7 +28,16 @@ export const AdminPanel = () => {
                 dispatch(refreshCarList);
             }
         })
-    }  
+    }
+
+    const updateCarItem = (value) => {
+        console.log(value);
+        dispatch(updateCarToBD(value)).unwrap().then(resp => {
+            if(resp.status === 200){
+                dispatch(refreshCarList);
+            }
+        });
+    }
 
     return (
         <div className={s.outterContainerAdminPanel}>
@@ -39,12 +48,12 @@ export const AdminPanel = () => {
                 <button className="btnCommon hoverElement activeElement">Чёрный список</button>
             </div>
             <div>
-                <button className={`btnCommon hoverElement activeElement btnMarginTopDown`} onClick={addCar}>Новый автомобиль</button>
+                <button className={`btnCommon hoverElement activeElement btnMarginTopDown`} onClick={addCar}> + Новый автомобиль</button>
             </div>
             <div className={s.selectedItemsContainer}>
                 {
                     _cars.length !== 0 ? 
-                    _cars.allCars.map(element => <CarItem key={element.id} id={element.id} delMethod={deleteCarItem} carElement={element} allTypes={_cars.allTypes}/>) :
+                    _cars.allCars.map(element => <CarItem key={element.id} id={element.id} delMethod={deleteCarItem} updateMethod={updateCarItem} carElement={element} allTypes={_cars.allTypes}/>) :
                     <></>
                 }
             </div>

@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import economList from '../MockData/EconomCarsMock';
 import businessList from '../MockData/BussinessCarsMock';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { allCarsGetQuery, deleteCarQuery } from '../Api/api';
+import { allCarsGetQuery, deleteCarQuery, updateCarQuery } from '../Api/api';
 import { addCarQuery } from './../Api/api';
 import { useDispatch } from 'react-redux';
 
@@ -43,6 +43,18 @@ export const addCar = createAsyncThunk('car/addCarPost', async(value) => {
 
 export const deleteCarFromBD = createAsyncThunk('car/deleteCarPost', async(value) => {
     const response = await fetch(deleteCarQuery, {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+        body: JSON.stringify(value)
+    });
+    return  response;
+})
+
+export const updateCarToBD = createAsyncThunk('car/updateCarPost', async(value) => {
+    const response = await fetch(updateCarQuery, {
         method: 'POST',
         headers: {
             'Accept': 'application/json',

@@ -10,3 +10,13 @@
 .outterContainerCarItem>div{
     margin: 0 10px;
 }
+
+.btnRemove{
+    color: red;
+    font-size: 1.3em;
+}
+
+.btnUpdate{
+    color: green;
+    font-size: 1.3em;
+}
