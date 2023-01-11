@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import s from './CarItem.module.css';
 import { TextInput, Select, Textarea } from '@mantine/core';
+import { useDispatch } from 'react-redux';
+import { deleteCarFromBD } from './../../../../Redux/carSlice';
 
 export const CarItem = (props) => {
+    const dispatch = useDispatch();
 
     const [_title, setTitle] = useState(props.carElement.title);
     const [_price, setPrice] = useState(props.carElement.price);
@@ -21,7 +24,7 @@ export const CarItem = (props) => {
             <Textarea value={_photo ?? " "} onChange={(e) => setPhoto(e.currentTarget.value)} placeholder="Фото" />
             <TextInput  value={_discription ?? ""} onChange={(e) => setDiscription(e.currentTarget.value)} placeholder="Описание" />
             <Select  value={props.carElement.type.interpretation} data={_types}/>
-            <button className="btnCommon hoverElement activeElement">Удалить</button>
+            <button className="btnCommon hoverElement activeElement" onClick={() => props.delMethod(props.id)}>Удалить</button>
             <button className="btnCommon hoverElement activeElement">Сохранить</button>
         </div>
     )

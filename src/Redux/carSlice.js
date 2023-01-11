@@ -2,11 +2,12 @@ import { createSlice } from '@reduxjs/toolkit';
 import economList from '../MockData/EconomCarsMock';
 import businessList from '../MockData/BussinessCarsMock';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { allCarsGetQuery } from '../Api/api';
+import { allCarsGetQuery, deleteCarQuery } from '../Api/api';
 import { addCarQuery } from './../Api/api';
+import { useDispatch } from 'react-redux';
 
 const initialState = {
-    allCars: '',
+    allCars: [],
     currentTypeCar: 'Эконом',
     currentListCar: ''
 }
@@ -40,7 +41,17 @@ export const addCar = createAsyncThunk('car/addCarPost', async(value) => {
     return  response.json();
 })
 
-export const deleteCar = createAsyncThunk()
+export const deleteCarFromBD = createAsyncThunk('car/deleteCarPost', async(value) => {
+    const response = await fetch(deleteCarQuery, {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+        body: JSON.stringify(value)
+    });
+    return  response;
+})
 
 //Обновление списка автомобилей
 export async function refreshCarList(dispatch, getState) {
@@ -52,5 +63,5 @@ export async function refreshCarList(dispatch, getState) {
 export const getCurrentTypeCar = (state) => state.car.currentTypeCar;
 export const getCars = (state) => state.car.allCars;
 
-export const { setCurrentTypeCar, setAllCars } = carSlice.actions;
+export const { setCurrentTypeCar, setAllCars, deleteCarFromState } = carSlice.actions;
 export default carSlice.reducer;
