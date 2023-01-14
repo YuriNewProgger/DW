@@ -77,7 +77,8 @@ export const Catalog = () => {
                 }}
                 overlayColor={true ? theme.colors.dark[9] : theme.colors.gray[2]}
                 overlayOpacity={0.55}
-                overlayBlur={3}
+                overlayBlur={10}
+                centered
                 opened={isOpenWinRegistrationRent}
                 onClose={() => setIsOpenWinRegistrationRent(false)}
                 title="Оформление аренды"
