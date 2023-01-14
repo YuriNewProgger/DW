@@ -1,21 +1,24 @@
 import React, { useEffect, useState } from "react";
 import s from './Catalog.module.css';
 import { CardCar } from "./CardCar/CardCar";
-import { ScrollArea, Modal } from '@mantine/core';
+import { ScrollArea, Modal, useMantineTheme } from '@mantine/core';
 import carsTypes from "../../Utils/CarsTypes/CarsTypes";
 import { useSelector, useDispatch } from 'react-redux';
 import { getCars, refreshCarList, setCurrentTypeCar } from "../../Redux/carSlice";
 import { getCurrentTypeCar } from './../../Redux/carSlice';
 import { getUser } from "../../Redux/userSlice";
+import { RentRegistration } from "./RentRegistration/RentRegistration";
 
 export const Catalog = () => {
 
     const dispatch = useDispatch();
+    const theme = useMantineTheme();
     const _cars = useSelector(getCars);
     const _currentTypeCar = useSelector(getCurrentTypeCar);
     const _currentUser = useSelector(getUser);
 
     const [isOpenWinRegistrationRent, setIsOpenWinRegistrationRent] = useState(false);
+    const [_selectedCar, setSelectedCar] = useState(null);
 
     useEffect(() => {
         dispatch(refreshCarList);
@@ -29,12 +32,13 @@ export const Catalog = () => {
 
     //#region Оформление аренды автомобиля
     const rentRegistration = (value) => {
-        if(_currentUser === ""){
+        if (_currentUser === "") {
             alert("Для просмотра информации и оформления аренды, необходимо авторизоваться.");
             return;
         }
 
-        console.log(value);
+        setSelectedCar(_cars.allCars.find(item => item.id === value));
+
         setIsOpenWinRegistrationRent(true);
     }
     //#endregion
@@ -68,10 +72,17 @@ export const Catalog = () => {
             </ScrollArea>
 
             <Modal
+                styles={{
+                    modal: { backgroundColor: '#1E1E1E', border: '1px solid #373737', color: '#BBBBBB' }
+                }}
+                overlayColor={true ? theme.colors.dark[9] : theme.colors.gray[2]}
+                overlayOpacity={0.55}
+                overlayBlur={3}
                 opened={isOpenWinRegistrationRent}
                 onClose={() => setIsOpenWinRegistrationRent(false)}
-                title="Оформление аренды">
-                {/* Modal content */}
+                title="Оформление аренды"
+                size="55%">
+                <RentRegistration SelectedCar={_selectedCar} />
             </Modal>
         </div>
     )

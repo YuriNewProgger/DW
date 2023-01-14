@@ -1,0 +1,12 @@
+.outterContainerRentRegistr{
+    display: flex;
+}
+
+.photoBlock{
+    width: 70%;
+    margin-right: 10px;
+}
+
+.photo{
+    width: 100%;
+}
