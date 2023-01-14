@@ -35,12 +35,14 @@ export const AddCar = (props) => {
         if(_titleError !== "" || _priceError !== "" || _photoError !== "" || _discriptionError !== "" || _typeCarError !== "")
             return;
         
+       
+        
         const newCar = {
             title: _title,
             price: _price,
             photo: _photo,
             discription: _discription,
-            typeCar: props.allTypes.find(item => item.title === _typeCar).id
+            typeCar: props.allTypes.find(item => item.interpretation === _typeCar).id
         }
 
         dispatch(addCar(newCar)).unwrap().then(resp => {
