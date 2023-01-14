@@ -30,7 +30,7 @@ export const Catalog = () => {
     }
     //#endregion
 
-    //#region Оформление аренды автомобиля
+    //#region Проверка авторизован ли пользователь. Показ окна оформления аренды автомобиля.
     const rentRegistration = (value) => {
         if (_currentUser === "") {
             alert("Для просмотра информации и оформления аренды, необходимо авторизоваться.");
@@ -43,6 +43,7 @@ export const Catalog = () => {
     }
     //#endregion
 
+    
     return (
         <div className={s.outterContainerCatalog}>
             <div className={s.titleSection}>

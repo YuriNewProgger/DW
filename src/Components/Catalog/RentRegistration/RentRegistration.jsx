@@ -6,8 +6,11 @@ import { Checkbox } from '@mantine/core';
 import dayjs from 'dayjs';
 import moment from 'moment';
 import { getFormatingDate } from './../../../Utils/DateFormatter/DateFormatter';
+import { getUser } from "../../../Redux/userSlice";
 
 export const RentRegistration = (props) => {
+    const user = useSelector(getUser);
+
     const [_startDate, onChangeStartDate] = useState(null);
     const [_endDate, onChangeEndDate] = useState(null);
     const [_isAgree, setIsAgree] = useState(false);
@@ -35,6 +38,21 @@ export const RentRegistration = (props) => {
         onChangeEndDate(dateFormating);
         setTotalSumForRent(days * props.SelectedCar.price);
     }
+
+    //#region Оформление автомобиля
+    const registrationCar = () => {
+
+        const _tmpRent = {
+            id_car: props.SelectedCar.id,
+            id_user: user.id,
+            start_date: _startDate,
+            end_date: _endDate,
+            is_compleate: false,
+            total_price: _totalSumForRent
+        }
+        console.log(_tmpRent);
+    }
+    //#endregion
 
     return (
         <div className={s.outterContainerRentRegistr}>
@@ -67,7 +85,7 @@ export const RentRegistration = (props) => {
                     onChange={(e) => setIsAgree(e.currentTarget.checked)} />
                 <div>Стоимость: {_totalSumForRent} руб.</div>
                 {
-                    _isAgree ? <button className="btnCommon hoverElement activeElement">Оформить</button> :
+                    _isAgree ? <button className="btnCommon hoverElement activeElement" onClick={registrationCar}>Оформить</button> :
                         <></>
                 }
             </div>

@@ -1,10 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
-import economList from '../MockData/EconomCarsMock';
-import businessList from '../MockData/BussinessCarsMock';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { allCarsGetQuery, deleteCarQuery, updateCarQuery } from '../Api/api';
 import { addCarQuery } from './../Api/api';
-import { useDispatch } from 'react-redux';
 
 const initialState = {
     allCars: [],
