@@ -52,7 +52,7 @@ export const RentRegistration = (props) => {
                             onChange={(e) => changeStartDate(e)} />
                     </div>
                     <div className="btnMarginTopDown">
-                        <DatePicker minDate={dayjs(new Date()).startOf('month').add(new Date().getDate() - 1, 'days').toDate()} 
+                        <DatePicker minDate={dayjs(new Date()).startOf('month').add(new Date().getDate(), 'days').toDate()} 
                             value={_endDate}
                             placeholder="Конечная дата" 
                             onChange={(e) => changeEndDate(e)} />
@@ -74,5 +74,3 @@ export const RentRegistration = (props) => {
         </div>
     )
 }
-
-//className="btnCommon hoverElement activeElement"
