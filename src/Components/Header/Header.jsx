@@ -43,7 +43,8 @@ export const Header = () => {
             </div>
             <div className={s.btnContainer}>
                 {
-                    currentUser === '' ? <button className="btnCommon hoverElement activeElement" onClick={() => setOpened(true)}>Войти</button> :
+                    currentUser === '' || currentUser === 'Bad' || currentUser === 'Blocked' ?
+                        <button className="btnCommon hoverElement activeElement" onClick={() => setOpened(true)}>Войти</button> :
                         <div className={openedPopMenu ? `textCommon ${s.currentUserInitials}` : `textCommon ${s.currentUserInitials} hoverElement activeElement`}>
                             <PopMenu isOpen={openedPopMenu} role={currentUser.title}/> 
                             {<Avatar onClick={() => setOpenedPopMenu(!openedPopMenu)} color="cyan" radius="xl" src={null} size='lg' alt={`${currentUser.name} ${currentUser.surname}`}>{currentUser.name[0]}{currentUser.surname[0]}</Avatar>}
