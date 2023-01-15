@@ -44,6 +44,11 @@ export const RentRegistration = (props) => {
     //#region Оформление автомобиля
     const registrationCar = () => {
 
+        if(!Number.isInteger(_totalSumForRent) || _totalSumForRent === 0){
+            alert("Ошибка! Не выбраны даты.")
+            return;
+        }
+
         const _tmpRent = {
             id_car: props.SelectedCar.id,
             id_user: user.id,
