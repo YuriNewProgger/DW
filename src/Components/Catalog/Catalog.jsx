@@ -84,7 +84,7 @@ export const Catalog = () => {
                 onClose={() => setIsOpenWinRegistrationRent(false)}
                 title="Оформление аренды"
                 size="55%">
-                <RentRegistration SelectedCar={_selectedCar} />
+                <RentRegistration SetIsOpenWinRegistrationRent={setIsOpenWinRegistrationRent} SelectedCar={_selectedCar} />
             </Modal>
         </div>
     )

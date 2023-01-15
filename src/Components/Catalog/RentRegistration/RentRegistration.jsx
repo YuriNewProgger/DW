@@ -7,8 +7,10 @@ import dayjs from 'dayjs';
 import moment from 'moment';
 import { getFormatingDate } from './../../../Utils/DateFormatter/DateFormatter';
 import { getUser } from "../../../Redux/userSlice";
+import { registrRentCar } from './../../../Redux/carSlice';
 
 export const RentRegistration = (props) => {
+    const dispatch = useDispatch();
     const user = useSelector(getUser);
 
     const [_startDate, onChangeStartDate] = useState(null);
@@ -50,7 +52,15 @@ export const RentRegistration = (props) => {
             is_compleate: false,
             total_price: _totalSumForRent
         }
-        console.log(_tmpRent);
+        dispatch(registrRentCar(_tmpRent)).unwrap().then(resp => {
+            if(resp.status === 200)
+                props.SetIsOpenWinRegistrationRent(false);
+            else if(resp.status === 400)
+                alert("Ошибка! Имеется не завешённая аренда.")
+            else{
+                alert("Ошибка сервера, попробуйте позже.")
+            }
+        });
     }
     //#endregion
 
