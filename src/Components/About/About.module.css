@@ -1,0 +1,35 @@
+.outterContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #bbb;
+}
+
+.titleText{    
+    font-size: 2em;
+    margin-top: 3%;
+}
+
+.discriptionAndIcons{
+    display: flex;
+    text-align: center;
+    font-size: 1.3em;
+}
+
+.discriptionAndIcon{
+    margin: 5%;
+}
+
+/* .discriptionAndIcon>div{
+    color: #bbb;
+} */
+
+.discriptionAndIcon>img{
+    width: 50px;
+}
+
+.discriptionContainer{
+    width: 70%;
+    margin-top: 3%;
+    font-size: 1.3em;
+}
