@@ -6,9 +6,15 @@ import tg from '../../Assets/Img/telegram.png';
 import wa from '../../Assets/Img/whatsapp.png';
 import yt from '../../Assets/Img/youtube.png';
 import { NetworkItem } from "../Common/NetworkItem/NetworkItem";
+import { YMaps, Map, Placemark } from '@pbe/react-yandex-maps';
 
 
 export const ContactsPage = () => {
+    const defaultState = {
+        center: [55.751574, 37.573856],
+        zoom: 9,
+        controls: ["zoomControl", "fullscreenControl"],
+    };
     return (
         <div>
             <div>
@@ -33,8 +39,17 @@ export const ContactsPage = () => {
                         <NetworkItem iconMassenger={wa} title="WhatsApp" />
                         <NetworkItem iconMassenger={yt} title="YouTube" />
                     </div>
-                    <div>
-
+                    <div style={{width:'60%', height:'100%', position:'relative'}}>
+                        <YMaps>
+                            <Map width='100%' height='100%' defaultState={defaultState} modules={["control.ZoomControl", "control.FullscreenControl"]}>
+                                <Placemark geometry={[55.812044, 37.726161]} 
+                                modules={["geoObject.addon.balloon"]}
+                                properties={{
+                                    balloonContentBody:
+                                      "Auto Drive Service - сервис аренды автомобилей.",
+                                  }}/>
+                            </Map>
+                        </YMaps>
                     </div>
                 </div>
             </div>

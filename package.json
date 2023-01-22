@@ -7,6 +7,7 @@
     "@mantine/core": "^5.9.2",
     "@mantine/dates": "^5.10.0",
     "@mantine/hooks": "^5.9.2",
+    "@pbe/react-yandex-maps": "^1.2.2",
     "@reduxjs/toolkit": "^1.9.1",
     "@tabler/icons": "^1.119.0",
     "@testing-library/jest-dom": "^5.16.5",

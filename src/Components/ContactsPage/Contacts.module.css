@@ -24,6 +24,7 @@
     height: 60vh;
     background-color: #373737;
     border-radius: 10px;
+    display: flex;
 }
 
 .textContent{
