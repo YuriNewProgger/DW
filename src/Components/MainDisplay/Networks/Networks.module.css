@@ -1,9 +1,9 @@
 .outterContainerMassengers{
     margin: 0 3%;
     width: 45%;
+    font-size: 1.5em;
 }
 
 .textNameActiveNetwork{
     color: #E8B98B;
-    font-size: 1.5em;
 }

@@ -16,7 +16,7 @@
     align-items: center;
     height: 69vh;
     color: #bbb;
-    font-size: 1.6em;
+    font-size: 1.5em;
 }
 
 .mainContainerContacts{
@@ -27,5 +27,17 @@
 }
 
 .textContent{
-    padding: 1%;
+    padding-top: 1%;
+    padding-left: 1%;
+    width: 40%;
+}
+
+.textContent>div{
+    margin: 1% 0;
+    display: flex;
+    align-items: center;
+}
+
+.outterContainerMassenger>span{
+    color: red;
 }
