@@ -1,5 +1,31 @@
 .bgCont{
-    height: 25vh;
+    height: 20vh;
     width: 100%;
     object-fit: cover;
+}
+
+/* .titlePage{
+    color: #bbb;
+    font-size: 1.6em;
+    margin: 1%;
+} */
+
+.outterContainerMainContact{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 69vh;
+    color: #bbb;
+    font-size: 1.6em;
+}
+
+.mainContainerContacts{
+    width: 90%;
+    height: 60vh;
+    background-color: #373737;
+    border-radius: 10px;
+}
+
+.textContent{
+    padding: 1%;
 }

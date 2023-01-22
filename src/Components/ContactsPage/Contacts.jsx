@@ -9,7 +9,16 @@ export const ContactsPage = () => {
             <div>
                 <img className={s.bgCont} src={bgCont}/>
             </div>
-            <div></div>
+            <div className={s.outterContainerMainContact}>
+                <div className={s.mainContainerContacts}>
+                    <div className={s.textContent}>
+                        <div>Контакты</div>
+                    </div>
+                    <div>
+
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }
