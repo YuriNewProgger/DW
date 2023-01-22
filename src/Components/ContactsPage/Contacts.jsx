@@ -46,7 +46,7 @@ export const ContactsPage = () => {
                                 modules={["geoObject.addon.balloon"]}
                                 properties={{
                                     balloonContentBody:
-                                      "Auto Drive Service - сервис аренды автомобилей.",
+                                      "Auto Drive Service - сервис аренды автомобилей. Адрес: бульвар Маршала Рокоссовского 10",
                                   }}/>
                             </Map>
                         </YMaps>
