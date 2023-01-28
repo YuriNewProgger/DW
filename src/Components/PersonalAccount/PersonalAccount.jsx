@@ -36,6 +36,7 @@ export const PersonalAccount = () => {
         return fields;
     }
 
+
     const displayRows = () => {
         const rows = histoty.map((element) => (
             <tr key={element.id} className={s.rowTable}>
@@ -59,7 +60,7 @@ export const PersonalAccount = () => {
                         <div>
                             <Avatar size={200}
                                 radius="xl"
-                                src="https://avatars.yandex.net/get-music-user-playlist/30088/124811568.1001.87810/m1000x1000?1583598759024&webp=false"
+                                src={`data:image/png;base64,${user.photo}`}
                                 alt="no image here" />
                         </div>
                     </div>
