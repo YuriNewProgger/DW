@@ -4,9 +4,11 @@ import { NavLink } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { getUser, setHistory, setUser } from "../../../Redux/userSlice";
+import { useNavigate } from "react-router-dom";
 
 export const PopMenu = (props) => {
 
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const user = useSelector(getUser);
 
@@ -14,6 +16,7 @@ export const PopMenu = (props) => {
     const exitAccount = () => {
         dispatch(setUser(''));
         dispatch(setHistory([]));
+        navigate("/");
     }
 
     return (
