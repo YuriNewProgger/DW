@@ -16,7 +16,8 @@ export const Body = () => {
             <Route path="/catalog" element={<Catalog />} />
             <Route path="/contact" element={<ContactsPage/>} />
             <Route path="/about" element={<About/>} />
-            <Route path="/adminPanel" element={<AdminPanel/>} />
+            {/* <Route path="/adminPanel" element={<AdminPanel/>} /> */}
+            <Route path="/adminPanel/*" element={<AdminPanel/>} />
             <Route path="/personalAccount" element={<PersonalAccount/>} />
         </Routes>
     )

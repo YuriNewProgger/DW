@@ -1,75 +1,31 @@
 import React, { useEffect, useState } from "react";
 import s from './AdminPanel.module.css';
-import { useSelector, useDispatch } from 'react-redux';
-import { refreshCarList, getCars, deleteCarFromBD, deleteCarFromState, deleteCarFromBDV2, updateCarToBD } from "../../Redux/carSlice";
-import { CarItem } from "./Categories/Cars/CarItem";
-import { Modal, useMantineTheme } from '@mantine/core';
-import { AddCar } from "./Categories/Cars/AddCar/AddCar";
+import { NavLink, Outlet } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+import { AdminPanelCars } from "./Categories/Cars/AdminPanelCars";
+import { AdminPanelBlackList } from "./Categories/BlackList/AdminPanelBlackList";
+import { AdminPanelUsers } from "./Categories/Users/AdminPanelUsers";
+import { AdminPanelRents } from "./Categories/Rents/AdminPanelRents";
 
 export const AdminPanel = () => {
-    const dispatch = useDispatch();
-
-    const [isOpenAddCarWindow, setIsOpenAddCarWindow] = useState(false);
-
-    const theme = useMantineTheme();
-    const _cars = useSelector(getCars);
-
-    useEffect(() => {
-        dispatch(refreshCarList);
-    }, []);
-
-    const addCar = () => {
-        setIsOpenAddCarWindow(true);
-    }
-
-    const deleteCarItem = (_id) => {
-        dispatch(deleteCarFromBD({id: _id})).unwrap().then(resp => {
-            if(resp.status === 200){
-                dispatch(refreshCarList);
-            }
-        })
-    }
-
-    const updateCarItem = (value) => {
-        console.log(value);
-        dispatch(updateCarToBD(value)).unwrap().then(resp => {
-            if(resp.status === 200){
-                dispatch(refreshCarList);
-            }
-        });
-    }
 
     return (
         <div className={s.outterContainerAdminPanel}>
             <div className={s.outterContainerCategories}>
-                <button className="btnCommon hoverElement activeElement">Автомобили</button>
-                <button className="btnCommon hoverElement activeElement">Аренда</button>
-                <button className="btnCommon hoverElement activeElement">Пользователи</button>
-                <button className="btnCommon hoverElement activeElement">Чёрный список</button>
+                <NavLink className={s.test} to="cars">Автомобили</NavLink>
+                <NavLink to="retns">Аренда</NavLink>
+                <NavLink to="users">Пользователи</NavLink>
+                <NavLink to="blackList">Чёрный список</NavLink>
             </div>
-            <div>
-                <button className={`btnCommon hoverElement activeElement btnMarginTopDown`} onClick={addCar}> + Новый автомобиль</button>
-            </div>
-            <div className={s.selectedItemsContainer}>
-                {
-                    _cars.length !== 0 ? 
-                    _cars.allCars.map(element => <CarItem key={element.id} id={element.id} delMethod={deleteCarItem} updateMethod={updateCarItem} carElement={element} allTypes={_cars.allTypes}/>) :
-                    <></>
-                }
-            </div>
-            <Modal
-                styles={{
-                    modal: { backgroundColor: '#1E1E1E', border: '1px solid #373737', color: '#BBBBBB' }
-                }}
-                overlayColor={true ? theme.colors.dark[9] : theme.colors.gray[2]}
-                overlayOpacity={0.55}
-                overlayBlur={3}
-                centered
-                opened={isOpenAddCarWindow}
-                onClose={() => setIsOpenAddCarWindow(false)}
-                title="Добавление нового автомобиля">
-                <AddCar allTypes={_cars.allTypes}/>
-            </Modal>
+            {
+                <Routes>
+                    <Route path="/cars" element={<AdminPanelCars/>} />
+                    <Route path="/retns" element={<AdminPanelRents/>} />
+                    <Route path="/users" element={<AdminPanelUsers/>} />
+                    <Route path="/blackList" element={<AdminPanelBlackList/>} />
+                </Routes>
+            }
+            
 
         </div>
     )

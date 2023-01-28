@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import userReducer from './userSlice';
 import carReducer from "./carSlice";
+import adminReducer from "./adminPanelSlice";
 
 export default configureStore({
     reducer: {
         user: userReducer,
-        car: carReducer
+        car: carReducer,
+        amdin: adminReducer
     },
     middleware: (getDefaultMiddleware) =>
 		getDefaultMiddleware({

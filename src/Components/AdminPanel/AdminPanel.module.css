@@ -5,12 +5,24 @@
 }
 
 .outterContainerCategories{
-    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5vh;
+    font-size: 1.2em;
 }
 
-.selectedItemsContainer{
-    /* margin-top: 5%; */
+.outterContainerCategories > a{
+    margin: 15px;
+    text-decoration: none;
+    color: #bbb;
+}
+.outterContainerCategories > a:hover{
+    transform: scale(1.05);
 }
 
+.outterContainerCategories > a:active{
+    transform: scale(0.95);
+}
 
 
