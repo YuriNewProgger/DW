@@ -24,7 +24,7 @@ export const ContactsPage = () => {
                 <div className={s.mainContainerContacts}>
                     <div className={s.textContent}>
                         <div>Контакты</div>
-                        <div><IconMapPin size={24} />Бульвар Маршала Рокоссовского 10</div>
+                        <div><IconMapPin size={24} />бульвар Маршала Рокоссовского 10</div>
                         <div><IconPhone size={24} />+7-800-2000-600</div>
                         <div><IconPhone size={24} />+7-(495)-345-66-00</div>
                         <div><IconAt size={24} />ads@gmail.com</div>

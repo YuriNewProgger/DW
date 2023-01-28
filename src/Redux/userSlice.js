@@ -4,6 +4,7 @@ import { loginPostQuery, regPostQuery } from './../Api/api';
 const initialState = {
     currentUser: '',
     typeAuth: 'signin',
+    history: [],
     status: 'idle'
 }
 
@@ -13,6 +14,9 @@ export const userSlice = createSlice({
     reducers: {
         setUser: (state, action) => {
             state.currentUser = action.payload;
+        },
+        setHistory: (state, action) => {
+            state.history = action.payload;
         },
         setTypeAuth: (state, action) => {
             state.typeAuth = action.payload.typeAuth
@@ -25,7 +29,8 @@ export const userSlice = createSlice({
             })
             .addCase(loginQuery.fulfilled, (state, action)=> {
                 state.status = 'succeeded';
-                state.currentUser = action.payload;
+                state.currentUser = action.payload.value;
+                state.history = action.payload.history;
             })
             .addCase(loginQuery.rejected, (state, action)=> {
                 state.status = 'failed';
@@ -59,7 +64,8 @@ export const registrationQuery = createAsyncThunk('user/registrationPost', async
 })
 
 export const getUser = (state) => state.user.currentUser;
+export const getHistory = (state) => state.user.history;
 export const getTypeAuth = (state) => state.user.typeAuth;
 
-export const { setUser, setTypeAuth } = userSlice.actions;
+export const { setUser, setTypeAuth, setHistory } = userSlice.actions;
 export default userSlice.reducer;

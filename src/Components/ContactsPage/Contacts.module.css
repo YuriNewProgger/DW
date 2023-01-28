@@ -4,12 +4,6 @@
     object-fit: cover;
 }
 
-/* .titlePage{
-    color: #bbb;
-    font-size: 1.6em;
-    margin: 1%;
-} */
-
 .outterContainerMainContact{
     display: flex;
     justify-content: center;

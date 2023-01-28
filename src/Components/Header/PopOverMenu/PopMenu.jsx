@@ -3,7 +3,7 @@ import s from './PopMenu.module.css';
 import { NavLink } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { getUser, setUser } from "../../../Redux/userSlice";
+import { getUser, setHistory, setUser } from "../../../Redux/userSlice";
 
 export const PopMenu = (props) => {
 
@@ -13,6 +13,7 @@ export const PopMenu = (props) => {
 
     const exitAccount = () => {
         dispatch(setUser(''));
+        dispatch(setHistory([]));
     }
 
     return (

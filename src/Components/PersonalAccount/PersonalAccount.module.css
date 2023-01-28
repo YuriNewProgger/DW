@@ -1,0 +1,56 @@
+.outterContanerPersonalAccount{
+    width: 100%;
+    height: 89vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #BBBBBB;
+    font-size: 1em;
+}
+
+.titleBlock{
+    font-size: 1.5em;
+    margin: 1%;
+}
+
+.infoPanel{
+    margin: 1% 0;
+    width: 90%;
+    /* height: 44.5vh; */
+    /* background-color: #373737; */
+    /* border-radius: 10px; */
+}
+
+.persanalInfo{
+    display: flex;
+}
+
+.photoBlock{
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}
+
+.photoBlock>div{
+    margin: 5px 0;
+}
+
+.textFields{
+    border-left: 2px solid #373737;
+    margin-left: 5%;
+}
+
+.fieldInfoText{
+    margin: 5px 10px;
+    font-size: 1.2em;
+}
+
+.tableOutterContainer{
+    overflow-y: auto;
+}
+
+.rowTable{
+    color: #BBBBBB;
+}
