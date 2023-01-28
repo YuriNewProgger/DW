@@ -7,7 +7,7 @@ export default configureStore({
     reducer: {
         user: userReducer,
         car: carReducer,
-        amdin: adminReducer
+        admin: adminReducer
     },
     middleware: (getDefaultMiddleware) =>
 		getDefaultMiddleware({

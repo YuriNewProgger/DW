@@ -6,3 +6,4 @@ export const updateCarQuery = `${server}/api/updateCar`; //Post для обно�
 export const loginPostQuery = `${server}/api/login`; //Post запрос на получение пользователя по логину
 export const regPostQuery = `${server}/api/reg`; //Post запрос на регистрацию пользователя
 export const regRentPostQuery = `${server}/api/registrRent`; //Post запрос на оформление аренды
+export const allUsersGetQuery = `${server}/api/allUsers`; //Get запрос на получение всех пользователей
