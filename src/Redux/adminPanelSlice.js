@@ -1,6 +1,6 @@
 
 import { createSlice } from '@reduxjs/toolkit';
-import { allUsersGetQuery, updateUserQuery } from './../Api/api';
+import { allUsersGetQuery, updateUserQuery, deleteUserQuery } from './../Api/api';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 const initialState = {
@@ -34,6 +34,20 @@ export const updateInfoUser = createAsyncThunk('updateInfoUser', async (value) =
         body: JSON.stringify(value)
     });
     //const result = await response.json();
+    return response;
+})
+//#endregion
+
+//#region Удаление пользователя
+export const deleteInfoUser = createAsyncThunk('deleteUser', async (value) => {
+    const response = await fetch(deleteUserQuery, {
+        method: "POST",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(value)
+    });
     return response;
 })
 //#endregion

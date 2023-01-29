@@ -95,7 +95,14 @@ export const UserItem = (props) => {
                                         id_login: props.User.id_login})}}>
                                 <span className={s.btnUpdate}>&#8634;</span>
                             </button>
-                            <button className="btnCommon hoverElement activeElement"><span className={s.btnRemove}>X</span></button>
+                            <button className="btnCommon hoverElement activeElement" onClick={() => 
+                                props.Delete(
+                                    {
+                                        id: props.User.id,
+                                        id_role: props.User.id_role, 
+                                        id_login: props.User.id_login
+                                    })}>
+                                <span className={s.btnRemove}>X</span></button>
                         </div>
 
                     </Accordion.Panel>
