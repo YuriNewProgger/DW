@@ -7,7 +7,6 @@ import { AddCar } from './AddCar/AddCar';
 import { CarItem } from './CarItem';
 
 export const AdminPanelCars = () => {
-    console.log('LOL');
     const dispatch = useDispatch();
 
     const [isOpenAddCarWindow, setIsOpenAddCarWindow] = useState(false);

@@ -7,3 +7,4 @@ export const loginPostQuery = `${server}/api/login`; //Post запрос на п
 export const regPostQuery = `${server}/api/reg`; //Post запрос на регистрацию пользователя
 export const regRentPostQuery = `${server}/api/registrRent`; //Post запрос на оформление аренды
 export const allUsersGetQuery = `${server}/api/allUsers`; //Get запрос на получение всех пользователей
+export const updateUserQuery = `${server}/api/updateUser`; //Post обновление информации о пользователе

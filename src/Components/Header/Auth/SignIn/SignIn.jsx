@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import s from './SignIn.module.css';
 import { TextInput } from '@mantine/core';
 import { useDispatch } from 'react-redux';
-import { setTypeAuth, loginQuery } from "../../../../Redux/userSlice";
+import { setTypeAuth, loginQuery, setUser } from "../../../../Redux/userSlice";
 import { useSelector } from 'react-redux';
+import { useNavigate } from "react-router-dom";
 
 export const SignIn = () => {
     
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const [_login, setLogin] = useState('');
     const [_password, setPassword] = useState('');

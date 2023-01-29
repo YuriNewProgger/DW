@@ -47,7 +47,8 @@ export const loginQuery = createAsyncThunk('user/loginPost', async(value) => {
           },
         body: JSON.stringify(value)
     });
-    return  response.json();
+    const result = await response.json();
+    return  result;
 })
 
 export const registrationQuery = createAsyncThunk('user/registrationPost', async(value) => {

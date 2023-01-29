@@ -27,12 +27,7 @@ export const Header = () => {
         }
     }, [currentUser]);
 
-    //Загрузка всех автомобилей, при загрузке этого компнонента. 
-    //TODO Посмотреть иные способы начальной инициализации
-    // useEffect(() => {
-    //     dispatch(getAllCars()).unwrap().then(resp => dispatch(setAllCars(resp)));
-    // }, []);
-
+    
     return (
         <div className={s.outterContainerHedaer}>
             <div className={s.logoText} onClick={() => navigate('/')}>

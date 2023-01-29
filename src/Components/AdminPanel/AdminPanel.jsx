@@ -6,6 +6,8 @@ import { AdminPanelCars } from "./Categories/Cars/AdminPanelCars";
 import { AdminPanelBlackList } from "./Categories/BlackList/AdminPanelBlackList";
 import { AdminPanelUsers } from "./Categories/Users/AdminPanelUsers";
 import { AdminPanelRents } from "./Categories/Rents/AdminPanelRents";
+import { useDispatch } from 'react-redux';
+import { loadUsers } from "../../Redux/adminPanelSlice";
 
 export const AdminPanel = () => {
 
