@@ -13,9 +13,6 @@ export const carSlice = createSlice({
     name: 'car',
     initialState,
     reducers: {
-        setCurrentTypeCar: (state, action) => {
-            state.currentTypeCar = action.currentTypeCar;
-        },
         setAllCars: (state, action) => {
             state.allCars = action.payload;
         },
