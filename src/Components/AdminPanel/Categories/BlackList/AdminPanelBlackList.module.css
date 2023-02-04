@@ -1,0 +1,5 @@
+.outterContainerBlackList{
+    width: 100%;
+    height: 84vh;
+    overflow-y: auto;
+}

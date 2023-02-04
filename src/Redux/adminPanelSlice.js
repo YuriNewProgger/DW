@@ -1,6 +1,6 @@
 
 import { createSlice } from '@reduxjs/toolkit';
-import { allUsersGetQuery, updateUserQuery, deleteUserQuery } from './../Api/api';
+import { allUsersGetQuery, updateUserQuery, deleteUserQuery, loadBlackListQuery } from './../Api/api';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 const initialState = {
@@ -14,9 +14,11 @@ const adminPanelSlice = createSlice({
     initialState,
     reducers: {
         setAllUsers: (state, action) => {
-            console.log(action.payload);
             state.users = action.payload;
         },
+        setBlackList: (state, action) => {
+            state.blackList = action.payload;
+        }
         // setCurrentTypeCar: (state, action) => {
         //     state.currentTypeCar = action.currentTypeCar;
         // }
@@ -60,7 +62,18 @@ export async function loadUsers(dispatch, getState){
 }
 //#endregion
 
-export const getAllUsers = (state) => state.admin.users;
+//#region Загрузка чёрного списка
+export const loadBlackList = createAsyncThunk('loadBlackList', async() => {
+    const response = await fetch(loadBlackListQuery);
+    const result = await response.json();
+    return result;
+})
+//#endregion
 
-export const { setAllUsers } = adminPanelSlice.actions;
+
+
+export const getAllUsers = (state) => state.admin.users;
+export const getBlackList = (state) => state.admin.blackList;
+
+export const { setAllUsers, setBlackList } = adminPanelSlice.actions;
 export default adminPanelSlice.reducer;

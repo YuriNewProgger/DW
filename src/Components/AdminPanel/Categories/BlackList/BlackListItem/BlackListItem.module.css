@@ -1,0 +1,16 @@
+.outterContainerBlackListItem{
+    display: flex;
+    align-items: center;
+    width: 50%;
+}
+
+.innerContainerBlackListItem{
+    width: 100%;
+}
+
+.outterContainerBlackListItem>div{
+    margin: 1%;
+}
+.btnRemoveControl{
+    margin-top: 1%;
+}

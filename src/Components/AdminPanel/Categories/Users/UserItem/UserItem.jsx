@@ -49,7 +49,7 @@ export const UserItem = (props) => {
             </button> */}
             {/* <button className="btnCommon hoverElement activeElement"><span className={s.btnRemove}>X</span></button> */}
 
-            <Accordion chevronPosition="left" defaultValue="" transitionDuration={1000}
+            <Accordion chevronPosition="right" defaultValue="" transitionDuration={1000}
                 styles={{
                     control: {
                         '&:hover': {
