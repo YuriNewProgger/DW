@@ -1,6 +1,6 @@
 
 import { createSlice } from '@reduxjs/toolkit';
-import { allUsersGetQuery, updateUserQuery, deleteUserQuery, loadBlackListQuery, addUserToBlackListQuery } from './../Api/api';
+import { allUsersGetQuery, updateUserQuery, deleteUserQuery, loadBlackListQuery, addUserToBlackListQuery, deleteUserFromBlackListQuery } from './../Api/api';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { getFormatingDate } from './../Utils/DateFormatter/DateFormatter';
 
@@ -74,6 +74,21 @@ export const loadBlackList = createAsyncThunk('loadBlackList', async() => {
 //#region Добавление пользователя в чёрный список
 export const addUserToBlackList = createAsyncThunk('addUserToBlackList', async(value) => {
     const response = await fetch(addUserToBlackListQuery,{
+        method: "POST",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(value)
+    });
+    const result = await response.json();
+    return result;
+})
+//#endregion
+
+//#region Удалить пользователя из черного списка
+export const deleteUserFromBlackList = createAsyncThunk('deleteUserFromBlackList', async(value) => {
+    const response = await fetch(deleteUserFromBlackListQuery,{
         method: "POST",
         headers: {
             'Accept': 'application/json',
