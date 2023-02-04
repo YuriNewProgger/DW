@@ -8,10 +8,6 @@ import { Accordion, Textarea } from '@mantine/core';
 export const BlackListItem = (props) => {
     return (
         <div className={s.outterContainerBlackListItem}>
-            {/* <TextInput disabled value={props.user.name} />
-            <TextInput disabled value={props.user.surname} />
-            <TextInput disabled value={props.user.snpassport} />
-            <div><button className="btnCommon hoverElement activeElement">X</button></div> */}
             <div className={s.innerContainerBlackListItem}>
             <Accordion chevronPosition="right" defaultValue="" transitionDuration={1000}
                 styles={{

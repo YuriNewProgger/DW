@@ -10,3 +10,4 @@ export const allUsersGetQuery = `${server}/api/allUsers`; //Get запрос н�
 export const updateUserQuery = `${server}/api/updateUser`; //Post обновление информации о пользователе
 export const deleteUserQuery = `${server}/api/deleteUser`; //Post удаление пользователя
 export const loadBlackListQuery = `${server}/api/blackList`; //Get загрузка чёрного списка
+export const addUserToBlackListQuery = `${server}/api/addUser`; //Get загрузка чёрного списка

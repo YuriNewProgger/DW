@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getBlackList, loadBlackList, setBlackList } from "../../../../Redux/adminPanelSlice";
 import { ScrollArea, Modal, useMantineTheme } from '@mantine/core';
 import { WindowAddUserToBlackList } from "./WindowAddUserToBlackList/WindowAddUserToBlackList";
+import { addUserToBlackList } from './../../../../Redux/adminPanelSlice';
 
 export const AdminPanelBlackList = () => {
 
@@ -21,11 +22,6 @@ export const AdminPanelBlackList = () => {
             }
         });
     }, []);
-
-    const addUserToBlackList = (value) => {
-        setIsOpenWindowAddedUserToBlackList(false);
-        console.log(value)
-    }
 
     const deleteUserFromBlackList = (value) => {
         console.log(value)
@@ -51,9 +47,9 @@ export const AdminPanelBlackList = () => {
                 centered
                 opened={isOpenWindowAddedUserToBlackList}
                 onClose={() => setIsOpenWindowAddedUserToBlackList(false)}
-                title="Добавление пользователя в чёрный список"
+                title=""
                 size="25%">
-                    <WindowAddUserToBlackList AddUserToBlacList={addUserToBlackList}/>
+                    <WindowAddUserToBlackList SetIsDisplayWindow={setIsOpenWindowAddedUserToBlackList}/>
             </Modal>
         </div>
     )
