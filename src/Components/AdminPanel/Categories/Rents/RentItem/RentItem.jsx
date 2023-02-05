@@ -2,10 +2,20 @@ import React, {useEffect, useState} from "react";
 import { Accordion, TextInput, Text } from '@mantine/core';
 import s from './RentItem.module.css';
 import moment from 'moment';
+import { useDispatch } from 'react-redux';
+import { finishRent, setRents } from "../../../../../Redux/adminPanelSlice";
 
 export const RentItem = (props) => {
+    const dispatch = useDispatch();
 
-    //const [isOverdue, setIsOverdue] = useState(false);
+    const finish = () => {
+        dispatch(finishRent(props.RentItem.id_rents)).unwrap()
+            .then(resp => {
+                if(resp.status === 200){
+                    dispatch(setRents(resp.value))
+                }
+            })
+    }
 
 
     return(
@@ -34,7 +44,7 @@ export const RentItem = (props) => {
                             <Text fz="lg" c="#bbb">{props.RentItem.title}</Text>
                             <Text fz="lg" c="#bbb">{props.RentItem.start_date.replace('T', ' ').replace('Z','').split(' ')[0]}</Text>
                             <Text fz="lg" c={props.RentItem.isOverdue ? "red" : "#bbb"}>{props.RentItem.end_date.replace('T', ' ').replace('Z','').split(' ')[0]}</Text>
-                            <button className="btnCommon hoverElement activeElement">
+                            <button className="btnCommon hoverElement activeElement" onClick={() => finish()}>
                                 <span className={s.btnRemove}>Завершить</span>
                             </button>
                         </div>

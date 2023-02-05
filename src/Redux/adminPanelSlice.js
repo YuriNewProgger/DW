@@ -1,9 +1,7 @@
 
 import { createSlice } from '@reduxjs/toolkit';
-import { allUsersGetQuery, updateUserQuery, deleteUserQuery, loadBlackListQuery, addUserToBlackListQuery, deleteUserFromBlackListQuery, getRentsQuery } from './../Api/api';
+import { allUsersGetQuery, updateUserQuery, deleteUserQuery, loadBlackListQuery, addUserToBlackListQuery, deleteUserFromBlackListQuery, getRentsQuery, finishRentQuery } from './../Api/api';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { getFormatingDate } from './../Utils/DateFormatter/DateFormatter';
-import { IconArrowWaveLeftDown } from '@tabler/icons';
 
 const initialState = {
     rents: [],
@@ -113,6 +111,20 @@ export const loadRents = createAsyncThunk('loadRents', async() => {
 })
 //#endregion
 
+//#region Завершить аренду
+export const finishRent = createAsyncThunk('finishRent', async(value) => {
+    const response = await fetch(finishRentQuery, {
+        method: "POST",
+        headers:{
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({id_rent: value})
+    });
+    const result = await response.json();
+    return result;
+})
+//#endregion
 
 export const getAllUsers = (state) => state.admin.users;
 export const getBlackList = (state) => state.admin.blackList;
