@@ -24,3 +24,13 @@
     display: flex;
     margin-top: 5%;
 }
+
+@media (max-width: 800px) {
+    .imgAndDiscription {
+        flex-direction: column;
+        align-items: center;
+    }
+    .imgAndDiscription>div{
+        width: 100%;
+    }
+}

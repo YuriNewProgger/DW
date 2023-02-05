@@ -19,3 +19,9 @@
 .outterContainer>a:active{
     transform: scale(0.95);
 }
+
+@media (max-width: 800px) {
+    .outterContainer{
+        font-size: 1.3em;
+    }
+}

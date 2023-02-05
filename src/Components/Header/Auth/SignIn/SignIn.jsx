@@ -31,9 +31,9 @@ export const SignIn = () => {
             <TextInput value={_login} onChange={(e) => setLogin(e.target.value)} styles={{label: { color: '#BBBBBB' }}} placeholder="Логин" label="Логин" />
             <TextInput value={_password} onChange={(e) => setPassword(e.target.value)} styles={{ label: { color: '#BBBBBB' }}} placeholder="Пароль" label="Пароль" />
 
-            <div className={s.btnForgetPasswordOutterContainer}>
+            {/* <div className={s.btnForgetPasswordOutterContainer}>
                 <button className={s.btnForgetPassword}>Забыл пароль</button>
-            </div>
+            </div> */}
 
             <div className={s.btnControls}>
                 <button className="btnCommon hoverElement activeElement" onClick={setSignUpTypeAuth}>

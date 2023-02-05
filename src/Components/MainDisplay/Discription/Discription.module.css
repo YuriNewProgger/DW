@@ -36,3 +36,7 @@
 .textDiscription>button:active{
     transform: scale(0.95);
 }
+
+@media (max-width: 1200px) {
+    .hedaerText {font-size: 3.5em;}
+  }

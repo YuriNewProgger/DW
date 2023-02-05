@@ -2,16 +2,20 @@ import React, { useEffect, useState } from "react";
 import s from './RentRegistration.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { DatePicker } from '@mantine/dates';
-import { Checkbox } from '@mantine/core';
+import { Checkbox, Modal, useMantineTheme } from '@mantine/core';
 import dayjs from 'dayjs';
 import moment from 'moment';
 import { getFormatingDate } from './../../../Utils/DateFormatter/DateFormatter';
 import { getUser } from "../../../Redux/userSlice";
 import { registrRentCar } from './../../../Redux/carSlice';
+import { FactorWindow } from "../FactorWIndow/FactorWindow";
 
 export const RentRegistration = (props) => {
     const dispatch = useDispatch();
     const user = useSelector(getUser);
+
+    const theme = useMantineTheme();
+    const [isShowFactorWindow, setIsShowFactorWindow] = useState(false);
 
     const [_startDate, onChangeStartDate] = useState(null);
     const [_endDate, onChangeEndDate] = useState(null);
@@ -91,7 +95,7 @@ export const RentRegistration = (props) => {
                             onChange={(e) => changeEndDate(e)} />
                     </div>
                 </div>
-                <button className="btnCommon hoverElement activeElement">Условия</button>
+                <button className="btnCommon hoverElement activeElement" onClick={() => setIsShowFactorWindow(true)}>Условия</button>
                 <Checkbox styles={
                     { labelWrapper: { color: '#BBBBBB' } }
                 }
@@ -104,6 +108,21 @@ export const RentRegistration = (props) => {
                         <></>
                 }
             </div>
+
+            <Modal
+                styles={{
+                    modal: { backgroundColor: '#1E1E1E', border: '1px solid #373737', color: '#BBBBBB' }
+                }}
+                overlayColor={true ? theme.colors.dark[9] : theme.colors.gray[2]}
+                overlayOpacity={0.55}
+                overlayBlur={10}
+                centered
+                opened={isShowFactorWindow}
+                onClose={() => setIsShowFactorWindow(false)}
+                title="Оформление аренды"
+                size="25%">
+                <FactorWindow/>
+            </Modal>
         </div>
     )
 }
