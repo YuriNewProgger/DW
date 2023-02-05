@@ -1,0 +1,6 @@
+.outterContainerCarItem{
+    width: 50%;
+}
+.innerContainer>div{
+    margin: 5px 0;
+}

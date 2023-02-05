@@ -1,8 +1,9 @@
 
 import { createSlice } from '@reduxjs/toolkit';
-import { allUsersGetQuery, updateUserQuery, deleteUserQuery, loadBlackListQuery, addUserToBlackListQuery, deleteUserFromBlackListQuery } from './../Api/api';
+import { allUsersGetQuery, updateUserQuery, deleteUserQuery, loadBlackListQuery, addUserToBlackListQuery, deleteUserFromBlackListQuery, getRentsQuery } from './../Api/api';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { getFormatingDate } from './../Utils/DateFormatter/DateFormatter';
+import { IconArrowWaveLeftDown } from '@tabler/icons';
 
 const initialState = {
     rents: [],
@@ -19,6 +20,9 @@ const adminPanelSlice = createSlice({
         },
         setBlackList: (state, action) => {
             state.blackList = action.payload;
+        },
+        setRents: (state, action) => {
+            state.rents = action.payload;
         }
         // setCurrentTypeCar: (state, action) => {
         //     state.currentTypeCar = action.currentTypeCar;
@@ -101,10 +105,18 @@ export const deleteUserFromBlackList = createAsyncThunk('deleteUserFromBlackList
 })
 //#endregion
 
+//#region Загузка аренд автомобилей
+export const loadRents = createAsyncThunk('loadRents', async() => {
+    const response = await fetch(getRentsQuery);
+    const result = await response.json();
+    return result;
+})
+//#endregion
 
 
 export const getAllUsers = (state) => state.admin.users;
 export const getBlackList = (state) => state.admin.blackList;
+export const getRents = (state) => state.admin.rents;
 
-export const { setAllUsers, setBlackList } = adminPanelSlice.actions;
+export const { setAllUsers, setBlackList, setRents } = adminPanelSlice.actions;
 export default adminPanelSlice.reducer;

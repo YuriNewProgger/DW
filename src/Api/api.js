@@ -12,3 +12,4 @@ export const deleteUserQuery = `${server}/api/deleteUser`; //Post удалени
 export const loadBlackListQuery = `${server}/api/blackList`; //Get загрузка чёрного списка
 export const addUserToBlackListQuery = `${server}/api/addUser`; //Post загрузка чёрного списка
 export const deleteUserFromBlackListQuery = `${server}/api/deleteUserFromBl`; //Psot удалить пользователя с чёрного списка
+export const getRentsQuery = `${server}/api/getRents`; //Psot удалить пользователя с чёрного списка
