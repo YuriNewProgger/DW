@@ -3,6 +3,7 @@ import { TextInput,  Textarea} from '@mantine/core';
 import s from './WindowAddUserToBlackList.module.css';
 import { useDispatch } from 'react-redux';
 import { addUserToBlackList, setBlackList } from './../../../../../Redux/adminPanelSlice';
+import { SuccessNotification } from "../../../../../Utils/Notifaction/Notifier";
 
 export const WindowAddUserToBlackList = (props) => {
 
@@ -19,6 +20,7 @@ export const WindowAddUserToBlackList = (props) => {
         })).unwrap().then(resp => {
             if(resp.status === 200){
                 dispatch(setBlackList(resp.values));
+                SuccessNotification('Пользователь добавлен в чёрный список.')
                 props.SetIsDisplayWindow(false);
             }
         });

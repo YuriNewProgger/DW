@@ -9,6 +9,7 @@ import { getFormatingDate } from './../../../Utils/DateFormatter/DateFormatter';
 import { getUser } from "../../../Redux/userSlice";
 import { registrRentCar } from './../../../Redux/carSlice';
 import { FactorWindow } from "../FactorWIndow/FactorWindow";
+import { SuccessNotification, UnsuccessNotification } from "../../../Utils/Notifaction/Notifier";
 
 export const RentRegistration = (props) => {
     const dispatch = useDispatch();
@@ -62,12 +63,18 @@ export const RentRegistration = (props) => {
             total_price: _totalSumForRent
         }
         dispatch(registrRentCar(_tmpRent)).unwrap().then(resp => {
-            if(resp.status === 200)
-                props.SetIsOpenWinRegistrationRent(false);
-            else if(resp.status === 400)
-                alert("Ошибка! Имеется не завешённая аренда.")
+            console.log(resp);
+            if(resp.status === 200){
+                SuccessNotification('Автомобиль успешно арендован. С вами свяжется оператор для уточнения деталей.');
+                props.SetIsOpenWinRegistrationRent(false);                
+            }                
+            else if(resp.status === 400){
+                UnsuccessNotification("Имеется активная аренда. Сдайте текущий автомобиль для оформления нового.");
+                //alert("Ошибка! Имеется не завешённая аренда.")
+            }                
             else{
-                alert("Ошибка сервера, попробуйте позже.")
+                //alert("Ошибка сервера, попробуйте позже.")
+                UnsuccessNotification("Ошибка сервера, попробуйте позже.")
             }
         });
     }

@@ -22,32 +22,6 @@ export const UserItem = (props) => {
 
     return (
         <div className={s.outterContainerCarItem}>
-            {/* <hr />
-            <TextInput placeholder="Имя" value={_name} />
-            <TextInput placeholder="Фамилия" value={_surname} />
-            <TextInput placeholder="Отчество" value={_patronymic} />
-            <TextInput placeholder="Возраст" value={_age} />
-            <Textarea placeholder="Фотография" value={_photo} />
-            <TextInput placeholder="Серия и номер паспорта" value={_snpassport} />
-            <TextInput placeholder="Телефон" value={_phone} />
-            <TextInput placeholder="Почта" value={_email} />
-            <TextInput placeholder="Логин" value={_login} />
-            <TextInput placeholder="Пароль" value={_password} />
-            <button className="btnCommon hoverElement activeElement">
-                <span className={s.btnUpdate}>&#8634;</span>
-            </button> */}
-            {/* <button className="btnCommon hoverElement activeElement" onClick={() => {props.updateMethod(
-                    {
-                        id: props.id,
-                        title: _title,
-                        price: _price,
-                        photo: _photo,
-                        discription: _discription,
-                        type: props.allTypes.find(item => item.interpretation === _type).id
-                    });}}>
-                <span className={s.btnUpdate}>&#8634;</span>
-            </button> */}
-            {/* <button className="btnCommon hoverElement activeElement"><span className={s.btnRemove}>X</span></button> */}
 
             <Accordion chevronPosition="right" defaultValue="" transitionDuration={1000}
                 styles={{

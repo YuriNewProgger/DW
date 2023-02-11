@@ -1,10 +1,9 @@
 import React from "react";
 import s from './BlackListItem.module.css';
-import { TextInput } from '@mantine/core';
-
 import { Accordion, Textarea } from '@mantine/core';
 import { useDispatch } from 'react-redux';
 import { deleteUserFromBlackList, setBlackList } from "../../../../../Redux/adminPanelSlice";
+import { SuccessNotification, UnsuccessNotification } from "../../../../../Utils/Notifaction/Notifier";
 
 
 export const BlackListItem = (props) => {
@@ -17,8 +16,10 @@ export const BlackListItem = (props) => {
             .then(resp => {
                 if(resp.status === 200){
                     dispatch(setBlackList(resp.values));
+                    SuccessNotification('Пользователь успешно удалён из чёрного списка.');
                 }
-            })
+            });
+        
     }
 
     return (

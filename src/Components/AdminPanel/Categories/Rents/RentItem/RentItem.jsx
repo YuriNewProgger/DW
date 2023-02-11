@@ -4,6 +4,7 @@ import s from './RentItem.module.css';
 import moment from 'moment';
 import { useDispatch } from 'react-redux';
 import { finishRent, setRents } from "../../../../../Redux/adminPanelSlice";
+import { SuccessNotification } from "../../../../../Utils/Notifaction/Notifier";
 
 export const RentItem = (props) => {
     const dispatch = useDispatch();
@@ -12,7 +13,8 @@ export const RentItem = (props) => {
         dispatch(finishRent(props.RentItem.id_rents)).unwrap()
             .then(resp => {
                 if(resp.status === 200){
-                    dispatch(setRents(resp.value))
+                    dispatch(setRents(resp.value));
+                    SuccessNotification('Аренда успешно завершена.');
                 }
             })
     }

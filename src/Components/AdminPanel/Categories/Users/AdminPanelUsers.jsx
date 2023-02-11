@@ -5,6 +5,7 @@ import { deleteInfoUser, getAllUsers, loadUsers } from "../../../../Redux/adminP
 import { useSelector } from 'react-redux';
 import { UserItem } from "./UserItem/UserItem";
 import { updateInfoUser } from './../../../../Redux/adminPanelSlice';
+import { SuccessNotification, UnsuccessNotification } from "../../../../Utils/Notifaction/Notifier";
 
 export const AdminPanelUsers = () => {
 
@@ -18,8 +19,14 @@ export const AdminPanelUsers = () => {
     //#region Обновление информации о пользователе
     const updateUserItem = (value) => {
         dispatch(updateInfoUser(value)).unwrap().then(resp => {
-            if(resp.status === 200)
+            if(resp.status === 200){
                 dispatch(loadUsers);
+                SuccessNotification("Обновлено")
+            }
+            else{
+                UnsuccessNotification("Обратитесь в техническую поддержку.")
+            }
+                
         });
     }
     //#endregion
@@ -29,6 +36,10 @@ export const AdminPanelUsers = () => {
         dispatch(deleteInfoUser(value)).unwrap().then(resp => {
             if(resp.status === 200){
                 dispatch(loadUsers);
+                SuccessNotification("Пользователь успешно удалён.")
+            }
+            else{
+                UnsuccessNotification("Обратитесь в техническую поддержку.")
             }
         });
     }

@@ -7,6 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './Redux/Store';
 import { fetchTodos } from './Redux/carSlice';
+import { NotificationsProvider } from '@mantine/notifications';
 
 //store.dispatch(fetchTodos)
 
@@ -14,7 +15,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
     <BrowserRouter>
-      <App />
+      <NotificationsProvider>
+        <App />
+      </NotificationsProvider>
     </BrowserRouter>
   </Provider>
 );
