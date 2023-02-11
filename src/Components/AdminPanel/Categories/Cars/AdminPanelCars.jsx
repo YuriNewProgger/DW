@@ -39,7 +39,6 @@ export const AdminPanelCars = () => {
     }
 
     const updateCarItem = (value) => {
-        console.log(value);
         dispatch(updateCarToBD(value)).unwrap().then(resp => {
             if(resp.status === 200){
                 dispatch(refreshCarList);

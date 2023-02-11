@@ -44,6 +44,7 @@ export const PersonalAccount = () => {
               <td>{element.start_date.replace('T', ' ').split('.')[0]}</td>
               <td>{element.end_date.replace('T', ' ').split('.')[0]}</td>
               <td>{element.total_price}</td>
+              <td className={element.is_compleate ? s.compleate : s.notCompleate}>{element.is_compleate ? `Завершено`: `Активно` }</td>
             </tr>
           ));
           return rows;
@@ -83,6 +84,7 @@ export const PersonalAccount = () => {
                           <th>Начало</th>
                           <th>Окончание</th>
                           <th>Цена</th>
+                          <th>Статус</th>
                         </tr>
                       </thead>
                       <tbody>{displayRows()}</tbody>
