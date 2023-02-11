@@ -1,14 +1,9 @@
-.outterContainerCarItem{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-top: 1px solid #373737;
-    margin: 20px 0;
-    padding: 10px 0;
-}
 
-.outterContainerCarItem>div{
-    margin: 0 10px;
+.outterContainerUserItem{
+    width: 50%;
+}
+.innerContainer>div{
+    margin: 5px 0;
 }
 
 .btnRemove{

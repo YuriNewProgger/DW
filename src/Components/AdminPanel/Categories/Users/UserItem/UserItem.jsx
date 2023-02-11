@@ -21,7 +21,7 @@ export const UserItem = (props) => {
 
 
     return (
-        <div className={s.outterContainerCarItem}>
+        <div className={s.outterContainerUserItem}>
 
             <Accordion chevronPosition="right" defaultValue="" transitionDuration={1000}
                 styles={{

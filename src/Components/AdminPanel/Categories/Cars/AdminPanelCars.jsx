@@ -7,6 +7,7 @@ import { AddCar } from './AddCar/AddCar';
 import { CarItem } from './CarItem';
 import { getStatusLoading } from './../../../../Redux/carSlice';
 import { Loader } from '@mantine/core';
+import { SuccessNotification, UnsuccessNotification } from "../../../../Utils/Notifaction/Notifier";
 
 export const AdminPanelCars = () => {
     const dispatch = useDispatch();
@@ -29,6 +30,10 @@ export const AdminPanelCars = () => {
         dispatch(deleteCarFromBD({id: _id})).unwrap().then(resp => {
             if(resp.status === 200){
                 dispatch(refreshCarList);
+                SuccessNotification("Автомобиль удалён.")
+            }
+            else{
+                UnsuccessNotification('Не удалось удалить. Обратитесь в тухническую поддержку.');
             }
         })
     }
@@ -38,6 +43,10 @@ export const AdminPanelCars = () => {
         dispatch(updateCarToBD(value)).unwrap().then(resp => {
             if(resp.status === 200){
                 dispatch(refreshCarList);
+                SuccessNotification("Информация обновленав.")
+            }
+            else{
+                UnsuccessNotification('Не удалось обновить. Обратитесь в тухническую поддержку.');
             }
         });
     }

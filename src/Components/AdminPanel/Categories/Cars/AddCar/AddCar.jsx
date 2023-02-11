@@ -3,6 +3,7 @@ import { TextInput, Select, Textarea } from '@mantine/core';
 import s from './AddCar.module.css';
 import { useDispatch } from 'react-redux';
 import { addCar, refreshCarList, setAllCars } from './../../../../../Redux/carSlice';
+import { SuccessNotification, UnsuccessNotification } from "../../../../../Utils/Notifaction/Notifier";
 
 
 export const AddCar = (props) => {
@@ -32,9 +33,8 @@ export const AddCar = (props) => {
         _photo === "" ?  setPhotoError("Ошибка! Значение поля не допустимо."):  setPhotoError("");
         _discription === "" ?  setDiscriptionError("Ошибка! Значение поля не допустимо."):  setDiscriptionError("");
 
-        if(_titleError !== "" || _priceError !== "" || _photoError !== "" || _discriptionError !== "" || _typeCarError !== "")
+        if(_title === "" || _price === "" || _photo === "" || _discription === "" || _typeCar === "")
             return;
-        
        
         
         const newCar = {
@@ -46,8 +46,13 @@ export const AddCar = (props) => {
         }
 
         dispatch(addCar(newCar)).unwrap().then(resp => {
-            if(resp === "Success")
+            if(resp === "Success"){
                 dispatch(refreshCarList);
+                SuccessNotification("Автомобиль добавлен.");
+            }
+            else{
+                UnsuccessNotification('Не удалось обновить. Обратитесь в тухническую поддержку.');
+            }
         });
     }
 
