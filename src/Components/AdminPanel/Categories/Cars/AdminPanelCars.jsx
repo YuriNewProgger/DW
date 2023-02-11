@@ -5,6 +5,8 @@ import { refreshCarList, getCars, deleteCarFromBD, deleteCarFromState, deleteCar
 import { Modal, useMantineTheme } from '@mantine/core';
 import { AddCar } from './AddCar/AddCar';
 import { CarItem } from './CarItem';
+import { getStatusLoading } from './../../../../Redux/carSlice';
+import { Loader } from '@mantine/core';
 
 export const AdminPanelCars = () => {
     const dispatch = useDispatch();
@@ -13,6 +15,7 @@ export const AdminPanelCars = () => {
 
     const theme = useMantineTheme();
     const _cars = useSelector(getCars);
+    const statusLoading = useSelector(getStatusLoading);
 
     useEffect(() => {
         dispatch(refreshCarList);
@@ -45,9 +48,12 @@ export const AdminPanelCars = () => {
             </div>
             <div className={s.selectedItemsContainer}>
                 {
-                    _cars.length !== 0 ? 
+                    statusLoading === 'Idle' ? 
                     _cars.allCars.map(element => <CarItem key={element.id} id={element.id} delMethod={deleteCarItem} updateMethod={updateCarItem} carElement={element} allTypes={_cars.allTypes}/>) :
-                    <></>
+                    <div className={s.loaderBlock}>
+                        <div>Загрузка</div>
+                        <Loader />
+                    </div>
                 }
             </div>
             <Modal

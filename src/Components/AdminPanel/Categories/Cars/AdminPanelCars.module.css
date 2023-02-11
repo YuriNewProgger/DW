@@ -2,7 +2,14 @@
     margin-top: 10px;
 }
 
-.selectedItemsContainer{
-    /* margin-top: 5%; */
+.loaderBlock{
+    font-size: 1.5em;
+    color: #bbb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+.loaderBlock>div{
+    margin: 5px;
+}

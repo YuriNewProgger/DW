@@ -6,7 +6,8 @@ import { addCarQuery } from './../Api/api';
 const initialState = {
     allCars: [],
     currentTypeCar: 'Эконом',
-    currentListCar: ''
+    currentListCar: '',
+    statusLoading: 'idle'
 }
 
 export const carSlice = createSlice({
@@ -18,6 +19,9 @@ export const carSlice = createSlice({
         },
         setCurrentTypeCar: (state, action) => {
             state.currentTypeCar = action.payload;
+        },
+        setStatus: (state, action) => {
+            state.statusLoading = action.payload;
         }
     }
 })
@@ -80,14 +84,17 @@ export const registrRentCar = createAsyncThunk('car/registrCar', async(value) =>
 
 //#region Обновление списка автомобилей в состоянии
 export async function refreshCarList(dispatch, getState) {
+    dispatch(setStatus('Loading'));
     const response = await fetch(allCarsGetQuery);
     const objs = await response.json();
     dispatch(setAllCars(objs));
+    dispatch(setStatus('Idle'));
 }
 //#endregion
 
 export const getCurrentTypeCar = (state) => state.car.currentTypeCar;
 export const getCars = (state) => state.car.allCars;
+export const getStatusLoading = (state) => state.car.statusLoading;
 
-export const { setCurrentTypeCar, setAllCars, deleteCarFromState } = carSlice.actions;
+export const { setCurrentTypeCar, setAllCars, deleteCarFromState, setStatus } = carSlice.actions;
 export default carSlice.reducer;
