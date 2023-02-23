@@ -61,7 +61,7 @@ export const registrationQuery = createAsyncThunk('user/registrationPost', async
         body: JSON.stringify(value)
     });
 
-    return response;
+    return await response.json();
 })
 
 export const getUser = (state) => state.user.currentUser;

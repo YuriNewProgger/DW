@@ -23,9 +23,6 @@ export const AdminPanelBlackList = () => {
         });
     }, []);
 
-    const deleteUserFromBlackList = (value) => {
-        console.log(value)
-    }
 
 
     return (
@@ -34,7 +31,7 @@ export const AdminPanelBlackList = () => {
                 <button className={`btnCommon hoverElement activeElement btnMarginTopDown`} onClick={() => setIsOpenWindowAddedUserToBlackList(true)}> + Добавить пользователя</button>
             </div>
             {
-                blackListItems.map(item => <BlackListItem key={item.id} user={item} DeleteFromBlackList={deleteUserFromBlackList}/>)
+                blackListItems.map(item => <BlackListItem key={item.id} user={item}/>)
             }
 
             <Modal

@@ -10,7 +10,7 @@ export const SignUp = () => {
     const [_surName, setSurName] = useState('');
     const [_patronymic, setPatronymic] = useState('');
     const [_snPassport, setsnPassport] = useState('');
-    const [_age, setAge] = useState('');
+    const [_year, setYear] = useState('');
     const [_phone, setPhone] = useState('');
     const [_email, setEmail] = useState('');
     const [_login, setLogin] = useState('');
@@ -30,7 +30,7 @@ export const SignUp = () => {
             surname: _surName,
             patronymic: _patronymic,
             snpassport: _snPassport,
-            age: _age,
+            year: _year,
             phone: _phone,
             email: _email,
             login: _login,
@@ -38,6 +38,7 @@ export const SignUp = () => {
         }
 
         dispatch(registrationQuery(newUser)).unwrap().then(resp => {
+            console.log(resp);
             if(resp.status === 200){
                 dispatch(loginQuery({login: newUser.login, password: newUser.password}));                
             }
@@ -66,10 +67,10 @@ export const SignUp = () => {
             }}
                 value={_snPassport} onChange={(e) => setsnPassport(e.currentTarget.value)} />
 
-            <TextInput placeholder="Полных лет" label="Возраст" withAsterisk styles={{
+            <TextInput placeholder="Год рождения" label="Год рождения" withAsterisk styles={{
                 label: { color: '#BBBBBB' }
             }}
-                value={_age} onChange={(e) => setAge(e.currentTarget.value)} />
+                value={_year} onChange={(e) => setYear(e.currentTarget.value)} />
 
             <TextInput placeholder="+7-000-000-00-00" label="Номер телефона" withAsterisk styles={{
                 label: { color: '#BBBBBB' }

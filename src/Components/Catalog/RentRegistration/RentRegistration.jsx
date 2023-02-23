@@ -6,7 +6,7 @@ import { Checkbox, Modal, useMantineTheme } from '@mantine/core';
 import dayjs from 'dayjs';
 import moment from 'moment';
 import { getFormatingDate } from './../../../Utils/DateFormatter/DateFormatter';
-import { getUser } from "../../../Redux/userSlice";
+import { getUser, setHistory } from "../../../Redux/userSlice";
 import { registrRentCar } from './../../../Redux/carSlice';
 import { FactorWindow } from "../FactorWIndow/FactorWindow";
 import { SuccessNotification, UnsuccessNotification } from "../../../Utils/Notifaction/Notifier";
@@ -63,17 +63,15 @@ export const RentRegistration = (props) => {
             total_price: _totalSumForRent
         }
         dispatch(registrRentCar(_tmpRent)).unwrap().then(resp => {
-            console.log(resp);
             if(resp.status === 200){
+                dispatch(setHistory(resp.history));
                 SuccessNotification('Автомобиль успешно арендован. С вами свяжется оператор для уточнения деталей.');
                 props.SetIsOpenWinRegistrationRent(false);                
             }                
-            else if(resp.status === 400){
+            else if(resp.status === 404){
                 UnsuccessNotification("Имеется активная аренда. Сдайте текущий автомобиль для оформления нового.");
-                //alert("Ошибка! Имеется не завешённая аренда.")
             }                
             else{
-                //alert("Ошибка сервера, попробуйте позже.")
                 UnsuccessNotification("Ошибка сервера, попробуйте позже.")
             }
         });

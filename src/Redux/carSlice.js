@@ -78,7 +78,7 @@ export const registrRentCar = createAsyncThunk('car/registrCar', async(value) =>
           },
         body: JSON.stringify(value)
     });
-    return  response;
+    return await response.json();
 })
 //#endregion
 
