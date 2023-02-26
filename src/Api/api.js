@@ -14,3 +14,5 @@ export const addUserToBlackListQuery = `${server}/api/addUser`; //Post загр�
 export const deleteUserFromBlackListQuery = `${server}/api/deleteUserFromBl`; //Psot удалить пользователя с чёрного списка
 export const getRentsQuery = `${server}/api/getRents`; //Get получить все текущие аренды
 export const finishRentQuery = `${server}/api/finishRent`; //Psot завершение аренды
+export const getUserById = `${server}/api/getAuthUser`; //Psot проверить авторизацию и запросить данные пользователя
+export const getHistoryQuery = `${server}/api/getHistory`; //Psot запросить все аренды пользователя

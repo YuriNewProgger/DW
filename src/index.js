@@ -8,8 +8,25 @@ import { Provider } from 'react-redux';
 import store from './Redux/Store';
 import { fetchTodos } from './Redux/carSlice';
 import { NotificationsProvider } from '@mantine/notifications';
+import { getAuthUser, setUser, getHistory, setHistory, getUserHistory } from './Redux/userSlice';
 
 //store.dispatch(fetchTodos)
+{
+  let token = localStorage.getItem('token');
+  if(token){
+    store.dispatch(getAuthUser(token)).unwrap().then(resp => {
+      if(resp.status === 200){
+        store.dispatch(setUser(resp.value));
+
+        store.dispatch(getUserHistory(resp.value.id)).unwrap().then(respSecond => {
+          if(respSecond.status === 200){
+            store.dispatch(setHistory(respSecond.values));
+          }
+        });
+      }
+    });
+  }
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

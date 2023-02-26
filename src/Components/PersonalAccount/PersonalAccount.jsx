@@ -1,9 +1,9 @@
-import React from "react";
+import React, {useEffect} from "react";
 import s from './PersonalAccount.module.css'
 import { Avatar, Table } from '@mantine/core';
-import { useSelector } from 'react-redux';
-import { getUser } from "../../Redux/userSlice";
-import { getHistory } from './../../Redux/userSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import { getUser, setHistory } from "../../Redux/userSlice";
+import { getHistory, getUserHistory } from './../../Redux/userSlice';
 import { getCars } from "../../Redux/carSlice";
 
 export const PersonalAccount = () => {
@@ -21,6 +21,7 @@ export const PersonalAccount = () => {
     ]
     const user = useSelector(getUser);
     const histoty = useSelector(getHistory);
+    const dispatch = useDispatch();
 
     const displayUserInfo = () => {
         const fields = [];
@@ -48,6 +49,17 @@ export const PersonalAccount = () => {
           ));
           return rows;
     }
+
+    useEffect(() => {
+        if(user.id){
+            dispatch(getUserHistory(user.id)).unwrap().then(resp => {
+                if(resp.status === 200){
+                    dispatch(setHistory(resp.values));
+                }
+            });
+        }
+        
+    }, []);
 
     return (
         <div className={s.outterContanerPersonalAccount}>

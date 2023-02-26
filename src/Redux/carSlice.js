@@ -84,8 +84,16 @@ export const registrRentCar = createAsyncThunk('car/registrCar', async(value) =>
 
 //#region Обновление списка автомобилей в состоянии
 export async function refreshCarList(dispatch, getState) {
+
+    let bearer = `Bearer ${localStorage.getItem('token')}`;
+
     dispatch(setStatus('Loading'));
-    const response = await fetch(allCarsGetQuery);
+    const response = await fetch(allCarsGetQuery, {
+        method: 'GET',
+        headers: {
+                'Authorization': bearer
+        }
+    });
     const objs = await response.json();
     dispatch(setAllCars(objs));
     dispatch(setStatus('Idle'));

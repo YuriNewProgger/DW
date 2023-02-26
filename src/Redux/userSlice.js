@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { loginPostQuery, regPostQuery } from './../Api/api';
+import { getHistoryQuery, getUserById, loginPostQuery, regPostQuery } from './../Api/api';
 
 const initialState = {
     currentUser: '',
@@ -30,7 +30,7 @@ export const userSlice = createSlice({
             .addCase(loginQuery.fulfilled, (state, action)=> {
                 state.status = 'succeeded';
                 state.currentUser = action.payload.value;
-                state.history = action.payload.history;
+                //state.history = action.payload.history;
             })
             .addCase(loginQuery.rejected, (state, action)=> {
                 state.status = 'failed';
@@ -48,6 +48,8 @@ export const loginQuery = createAsyncThunk('user/loginPost', async(value) => {
         body: JSON.stringify(value)
     });
     const result = await response.json();
+    localStorage.setItem('token', result.token);
+    delete result.token;
     return  result;
 })
 
@@ -62,6 +64,34 @@ export const registrationQuery = createAsyncThunk('user/registrationPost', async
     });
 
     return await response.json();
+})
+
+export const getAuthUser = createAsyncThunk('user/getAuthUser', async (value) => {
+    const response = await fetch(getUserById, {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${value}`
+          },
+        body: JSON.stringify()
+    });
+
+    return await response.json();
+})
+
+export const getUserHistory = createAsyncThunk('user/getUserHistory', async(idUser) => {
+    const response = await fetch(getHistoryQuery, {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+        body: JSON.stringify({id: idUser})
+    });
+
+    const result = await response.json();
+    return result;
 })
 
 export const getUser = (state) => state.user.currentUser;

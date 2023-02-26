@@ -4,6 +4,7 @@ import { TextInput, PasswordInput } from '@mantine/core';
 import { useDispatch } from 'react-redux';
 import { setTypeAuth, loginQuery, setUser } from "../../../../Redux/userSlice";
 import { useNavigate } from "react-router-dom";
+import Cookies from 'js-cookie';
 
 export const SignIn = () => {
     

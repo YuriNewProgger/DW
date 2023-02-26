@@ -14,6 +14,7 @@ export const PopMenu = (props) => {
 
 
     const exitAccount = () => {
+        localStorage.removeItem('token');
         dispatch(setUser(''));
         dispatch(setHistory([]));
         navigate("/");
