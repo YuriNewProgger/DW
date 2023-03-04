@@ -90,10 +90,10 @@ export const UserItem = (props) => {
                                     <TextInput placeholder="Имя" value={_name} onChange={(e) => setName(e.currentTarget.value)}/>
                                     <TextInput placeholder="Фамилия" value={_surname} onChange={(e) => setSurname(e.currentTarget.value)}/>
                                     <TextInput placeholder="Отчество" value={_patronymic} onChange={(e) => setPatronymic(e.currentTarget.value)}/>
-                                    {/* <TextInput placeholder="Возраст" value={_age} onChange={(e) => setAge(e.currentTarget.value)}/> */}
                                     <TextInput placeholder="Серия и номер паспорта" value={_snpassport} onChange={(e) => setSnpassport(e.currentTarget.value)}/>
                                     <TextInput placeholder="Телефон" value={_phone} onChange={(e) => setPhone(e.currentTarget.value)}/>
                                     <TextInput placeholder="Почта" value={_email} onChange={(e) => setEmail(e.currentTarget.value)}/>
+                                    {/* TODO сделать поля логина и пароля редактируемые */}
                                     {/* <TextInput placeholder="Логин" value={_login} onChange={(e) => setLogin(e.currentTarget.value)}/>
                                     <TextInput placeholder="Пароль" value={_password} onChange={(e) => setPassword(e.currentTarget.value)}/> */}
                                 </div>

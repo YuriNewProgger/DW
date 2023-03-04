@@ -27,7 +27,8 @@ export const PersonalAccount = () => {
         const fields = [];
 
         Object.keys(user).forEach(item => {
-            if(!item.includes('id') && !item.includes('title') && !item.includes('photo') && !item.includes('login') && !item.includes('password'))
+            if(!item.includes('id') && !item.includes('title') && !item.includes('photo') 
+                && !item.includes('login') && !item.includes('password') && !item.includes('age'))
                 fields.push(
                 <div className={s.fieldInfoText} key={item}>
                     {dictionary.find(element => element.field === item)?.interpretation}: {user[item]}
