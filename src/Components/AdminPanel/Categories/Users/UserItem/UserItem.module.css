@@ -1,7 +1,22 @@
 .outterContainerUserItem{
     width: 50%;
 }
-.innerContainer>div{
+
+.userPhoto{
+    display: flex;
+    align-items: center;
+}
+
+.userInfo{
+    display: flex;
+}
+
+.textFields{
+    width: 100%;
+    margin-left: 10px;
+}
+
+.textFields>div{
     margin: 5px 0;
 }
 
