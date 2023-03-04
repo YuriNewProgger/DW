@@ -5,6 +5,9 @@ import { useDispatch } from "react-redux";
 import { loginQuery, registrationQuery, setTypeAuth, setUser } from "../../../../Redux/userSlice";
 import { ConverImageToBase64 } from "../../../../Utils/Converter/Converter";
 import { CustomUploadFile } from "../../../Common/CustomUploadFile/CustomUploadFile";
+import { CheckPhone } from "../../../../Utils/VerifierExpressions/Verifier";
+import { CheckSpecSymbol } from './../../../../Utils/VerifierExpressions/Verifier';
+import { UnsuccessNotification } from "../../../../Utils/Notifaction/Notifier";
 
 export const SignUp = () => {
 
@@ -50,8 +53,8 @@ export const SignUp = () => {
             photo: _photo
         }
 
+
         dispatch(registrationQuery(newUser)).unwrap().then(resp => {
-            console.log(resp);
             if(resp.status === 200){
                 dispatch(loginQuery({login: newUser.login, password: newUser.password}));                
             }

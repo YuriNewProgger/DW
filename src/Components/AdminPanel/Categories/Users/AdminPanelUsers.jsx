@@ -38,6 +38,9 @@ export const AdminPanelUsers = () => {
                 dispatch(loadUsers);
                 SuccessNotification("Пользователь успешно удалён.")
             }
+            else if(resp.status === 406){
+                UnsuccessNotification("Невозможно удалить. Имеется не завершенная аренда.")
+            }
             else{
                 UnsuccessNotification("Обратитесь в техническую поддержку.")
             }

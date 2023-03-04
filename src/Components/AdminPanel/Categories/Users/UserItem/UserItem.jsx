@@ -41,43 +41,6 @@ export const UserItem = (props) => {
                 <Accordion.Item value="customization">
                     <Accordion.Control>{`${_name} ${_surname} ${_patronymic} ${_snpassport}`}</Accordion.Control>
                     <Accordion.Panel>
-                        {/* <div className={s.innerContainer}>
-                            <img src={_photo}/>
-                            <TextInput placeholder="Имя" value={_name} onChange={(e) => setName(e.currentTarget.value)}/>
-                            <TextInput placeholder="Фамилия" value={_surname} onChange={(e) => setSurname(e.currentTarget.value)}/>
-                            <TextInput placeholder="Отчество" value={_patronymic} onChange={(e) => setPatronymic(e.currentTarget.value)}/>
-                            <TextInput placeholder="Возраст" value={_age} onChange={(e) => setAge(e.currentTarget.value)}/>
-                            <TextInput placeholder="Серия и номер паспорта" value={_snpassport} onChange={(e) => setSnpassport(e.currentTarget.value)}/>
-                            <TextInput placeholder="Телефон" value={_phone} onChange={(e) => setPhone(e.currentTarget.value)}/>
-                            <TextInput placeholder="Почта" value={_email} onChange={(e) => setEmail(e.currentTarget.value)}/>
-                            <TextInput placeholder="Логин" value={_login} onChange={(e) => setLogin(e.currentTarget.value)}/>
-                            <TextInput placeholder="Пароль" value={_password} onChange={(e) => setPassword(e.currentTarget.value)}/>
-                            <button className="btnCommon hoverElement activeElement" onClick={() => {
-                                props.Update(
-                                    { 
-                                        id: props.User.id, 
-                                        name: _name, 
-                                        surname: _surname, 
-                                        patronymic: _patronymic, 
-                                        age: _age, 
-                                        email: _email, 
-                                        login: _login, 
-                                        password: _password, 
-                                        phone: _phone, 
-                                        photo: _photo, 
-                                        snpassport: _snpassport, 
-                                        id_login: props.User.id_login})}}>
-                                <span className={s.btnUpdate}>&#8634;</span>
-                            </button>
-                            <button className="btnCommon hoverElement activeElement" onClick={() => 
-                                props.Delete(
-                                    {
-                                        id: props.User.id,
-                                        id_role: props.User.id_role, 
-                                        id_login: props.User.id_login
-                                    })}>
-                                <span className={s.btnRemove}>X</span></button>
-                        </div> */}
                          <div className={s.innerContainer}>
                             <div className={s.userInfo}>
                                 <div className={s.userPhoto}>

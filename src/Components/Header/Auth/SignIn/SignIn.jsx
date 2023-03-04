@@ -3,6 +3,8 @@ import s from './SignIn.module.css';
 import { TextInput, PasswordInput } from '@mantine/core';
 import { useDispatch } from 'react-redux';
 import { setTypeAuth, loginQuery, setUser } from "../../../../Redux/userSlice";
+import { CheckSpecSymbol } from './../../../../Utils/VerifierExpressions/Verifier';
+import { UnsuccessNotification } from "../../../../Utils/Notifaction/Notifier";
 
 export const SignIn = () => {
     
@@ -20,6 +22,12 @@ export const SignIn = () => {
             login: _login, 
             password: _password
         }
+
+        if(CheckSpecSymbol(_login) || CheckSpecSymbol(_password)){
+            UnsuccessNotification('Логин и пароль должны состоять только из букв и цифр!')
+            return;
+        }
+        
         dispatch(loginQuery(value));
     }
 
