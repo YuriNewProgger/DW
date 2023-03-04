@@ -72,7 +72,7 @@ export const PersonalAccount = () => {
                         <div>
                             <Avatar size={200}
                                 radius="xl"
-                                src={`data:image/png;base64,${user.photo}`}
+                                src={user.photo}
                                 alt="no image here" />
                         </div>
                     </div>

@@ -4,6 +4,8 @@ import s from './AddCar.module.css';
 import { useDispatch } from 'react-redux';
 import { addCar, refreshCarList, setAllCars } from './../../../../../Redux/carSlice';
 import { SuccessNotification, UnsuccessNotification } from "../../../../../Utils/Notifaction/Notifier";
+import { CustomUploadFile } from "../../../../Common/CustomUploadFile/CustomUploadFile";
+import { ConverImageToBase64 } from "../../../../../Utils/Converter/Converter";
 
 
 export const AddCar = (props) => {
@@ -14,6 +16,7 @@ export const AddCar = (props) => {
     const [_photo, setPhoto] = useState("");
     const [_discription, setDiscription] = useState("");
     const [_typeCar, setTypeCar] = useState("");
+    const [_titlePhoto, setTitlePhoto] = useState('');
 
     const [_titleError, setTitleError] = useState("");
     const [_priceError, setPriceError] = useState("");
@@ -56,6 +59,13 @@ export const AddCar = (props) => {
         });
     }
 
+    const uploadImage = async (e) => {
+        const file = e.target.files[0];
+        setTitlePhoto(file.name);
+        const base64 = await ConverImageToBase64(file);
+        setPhoto(base64);
+    }
+
     return (
         <div className={s.outterContainerAddCar}>
             <div>
@@ -68,10 +78,10 @@ export const AddCar = (props) => {
                 <TextInput value={_price} onChange={(e) => setPrice(e.currentTarget.value)} error={_priceError}/>
             </div>
 
-            <div>
+            {/* <div>
                 <div>Фотография в формате base64 (размер 1280х1024)</div>
                 <Textarea value={_photo} onChange={(e) => setPhoto(e.currentTarget.value)} error={_photoError}/>
-            </div>
+            </div> */}
 
             <div>
                 <div>Описание автомобиля (комплектация, л.с)</div>
@@ -82,6 +92,8 @@ export const AddCar = (props) => {
                 <div>Класс</div>
                 <Select data={_types} value={_typeCar} onChange={setTypeCar} error={_typeCarError}/>
             </div>
+
+            <CustomUploadFile TitlePhoto={_titlePhoto} CbUploadImage={uploadImage}/>
 
             <div>
                 <button className="btnCommon hoverElement activeElement" onClick={saveNewCar}>Сохранить</button>

@@ -4,17 +4,15 @@ import { Navbar } from "../Navbar/Navbar";
 import { useNavigate } from "react-router-dom";
 import { Modal, useMantineTheme, Avatar } from '@mantine/core';
 import { Auth } from "./Auth/Auth";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { getTypeAuth, getUser } from "../../Redux/userSlice";
 import { PopMenu } from "./PopOverMenu/PopMenu";
-import { getAllCars, setAllCars } from "../../Redux/carSlice";
 
 
 export const Header = () => {
 
     const navigate = useNavigate();
     const theme = useMantineTheme();
-    const dispatch = useDispatch();
     const typeAuth = useSelector(getTypeAuth);
     const currentUser = useSelector(getUser);
 
@@ -41,8 +39,8 @@ export const Header = () => {
                     currentUser === '' || currentUser === 'Bad' || currentUser === 'Blocked' ?
                         <button className="btnCommon hoverElement activeElement" onClick={() => setOpened(true)}>Войти</button> :
                         <div className={openedPopMenu ? `textCommon ${s.currentUserInitials}` : `textCommon ${s.currentUserInitials} hoverElement activeElement`}>
-                            <PopMenu isOpen={openedPopMenu} role={currentUser.title}/> 
-                            {<Avatar onClick={() => setOpenedPopMenu(!openedPopMenu)} color="cyan" radius="xl" src={`data:image/png;base64,${currentUser.photo}`} size='lg' alt={`${currentUser.name} ${currentUser.surname}`}>{currentUser.name[0]}{currentUser.surname[0]}</Avatar>}
+                            <PopMenu isOpen={openedPopMenu} role={currentUser.title}/>                             
+                            {<Avatar onClick={() => setOpenedPopMenu(!openedPopMenu)} color="cyan" radius="xl" src={currentUser.photo} size='lg' alt={`${currentUser.name} ${currentUser.surname}`}>{currentUser.name[0]}{currentUser.surname[0]}</Avatar>}
                         </div>
                 }
             </div>

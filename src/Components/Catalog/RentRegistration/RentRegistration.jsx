@@ -81,7 +81,8 @@ export const RentRegistration = (props) => {
     return (
         <div className={s.outterContainerRentRegistr}>
             <div className={s.photoBlock}>
-                <img className={s.photo} src={`data:image/png;base64,${props.SelectedCar.photo}`} alt="" />
+                <img className={s.photo} src={`${props.SelectedCar.photo}`} alt="" />
+                {/* <img className={s.photo} src={`data:image/png;base64,${props.SelectedCar.photo}`} alt="" /> */}
             </div>
             <div className={s.controlBlock}>
                 <div>

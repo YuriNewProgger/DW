@@ -1,0 +1,29 @@
+input[type="file"] {
+    display: none;
+}
+
+.customfileupload {
+    margin: 10px 0;
+    border: 2px solid #373737;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    color: #bbb;
+}
+
+.customfileupload:hover{
+    cursor: pointer;
+}
+.customfileupload:active{
+    transform: scale(0.95);
+}
+
+.customUploaderFile{
+    display: flex;
+    align-items: center;
+}
+
+.customUploaderFile>div{
+    margin: 0 10px;
+}

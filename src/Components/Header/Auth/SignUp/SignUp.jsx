@@ -3,6 +3,8 @@ import s from './SignUp.module.css';
 import { TextInput } from '@mantine/core';
 import { useDispatch } from "react-redux";
 import { loginQuery, registrationQuery, setTypeAuth, setUser } from "../../../../Redux/userSlice";
+import { ConverImageToBase64 } from "../../../../Utils/Converter/Converter";
+import { CustomUploadFile } from "../../../Common/CustomUploadFile/CustomUploadFile";
 
 export const SignUp = () => {
 
@@ -15,14 +17,24 @@ export const SignUp = () => {
     const [_email, setEmail] = useState('');
     const [_login, setLogin] = useState('');
     const [_password, setPassword] = useState('');
+    const [_photo, setPhoto] = useState('');
+    const [_titlePhoto, setTitlePhoto] = useState('');
 
     const dispatch = useDispatch();
+
     useEffect(() => {
         return () => {
             dispatch(setTypeAuth({ typeAuth: 'signin' }));
         }
 
     }, []);
+
+    const uploadImage = async (e) => {
+        const file = e.target.files[0];
+        setTitlePhoto(file.name);
+        const base64 = await ConverImageToBase64(file);
+        setPhoto(base64);
+    }
 
     const registration = () => {
         const newUser = {
@@ -34,7 +46,8 @@ export const SignUp = () => {
             phone: _phone,
             email: _email,
             login: _login,
-            password: _password
+            password: _password,
+            photo: _photo
         }
 
         dispatch(registrationQuery(newUser)).unwrap().then(resp => {
@@ -91,6 +104,9 @@ export const SignUp = () => {
                 label: { color: '#BBBBBB' }
             }}
                 value={_password} onChange={(e) => setPassword(e.currentTarget.value)} />
+
+            <CustomUploadFile TitlePhoto={_titlePhoto} CbUploadImage={uploadImage}/>
+            
 
             <div className={s.outterContainerBtnSignUp}>
                 <div className={s.btnControls}>
