@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import s from './EditInfoUser.module.css';
 import { TextInput, Avatar } from '@mantine/core';
-import { useSelector } from 'react-redux';
-import { getUser } from "../../../Redux/userSlice";
 import { CustomUploadFile } from "../CustomUploadFile/CustomUploadFile";
 import { ConverImageToBase64 } from './../../../Utils/Converter/Converter';
 
