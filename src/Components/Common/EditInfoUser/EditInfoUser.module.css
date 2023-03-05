@@ -1,0 +1,34 @@
+.outterContainerEditUsirInfo{
+    text-align: center;
+    border-top: 1px solid #373737;
+    padding: 10px;
+}
+
+.outterContainerEditUsirInfo>button{
+    margin: 10px;
+}
+
+
+.userPhoto{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.userPhoto>button{
+    margin: 10px 0;
+}
+
+.userInfo{
+    display: flex;
+}
+
+.textFields{
+    width: 100%;
+    margin-left: 10px;
+}
+
+.textFields>div{
+    margin: 5px 0;
+}
+

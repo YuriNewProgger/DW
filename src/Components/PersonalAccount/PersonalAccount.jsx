@@ -1,10 +1,14 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import s from './PersonalAccount.module.css'
-import { Avatar, Table } from '@mantine/core';
+import { Avatar, Table, Tooltip, Modal, useMantineTheme } from '@mantine/core';
 import { useSelector, useDispatch } from 'react-redux';
-import { getUser, setHistory } from "../../Redux/userSlice";
+import { getUser, setHistory, setUser } from "../../Redux/userSlice";
 import { getHistory, getUserHistory } from './../../Redux/userSlice';
 import { getCars } from "../../Redux/carSlice";
+import editIcon from '../../Assets/Img/editIcon.svg';
+import { EditInfoUser } from "../Common/EditInfoUser/EditInfoUser";
+import { updateInfoUser } from "../../Redux/adminPanelSlice";
+import { SuccessNotification, UnsuccessNotification } from './../../Utils/Notifaction/Notifier';
 
 export const PersonalAccount = () => {
 
@@ -23,6 +27,10 @@ export const PersonalAccount = () => {
     const histoty = useSelector(getHistory);
     const dispatch = useDispatch();
 
+    const theme = useMantineTheme();
+    const [isEditProfile, setIsEditProfile] = useState(false);
+
+    //#region Отображение информации о пользователе
     const displayUserInfo = () => {
         const fields = [];
 
@@ -37,7 +45,9 @@ export const PersonalAccount = () => {
 
         return fields;
     }
+    //#endregion
 
+    //#region Отображение строк аренды
     const displayRows = () => {
         const rows = histoty.map((element) => (
             <tr key={element.id} className={s.rowTable}>
@@ -50,6 +60,7 @@ export const PersonalAccount = () => {
           ));
           return rows;
     }
+    //#endregion
 
     useEffect(() => {
         if(user.id){
@@ -62,11 +73,29 @@ export const PersonalAccount = () => {
         
     }, []);
 
+    const update = (value) => {
+        dispatch(updateInfoUser(value)).unwrap().then(resp => {
+            if(resp.status === 200){
+                dispatch(setUser(value));
+                SuccessNotification('Изменения сохранены.');
+                setIsEditProfile(false);
+            }
+            else{
+                UnsuccessNotification('Изменения не сохранены.');
+            }
+        })
+    }
+
     return (
         <div className={s.outterContanerPersonalAccount}>
             <div className={s.infoPanel}>
                 <div className={s.titleBlock}>
-                    Профиль
+                    <div>Профиль</div>
+                    <Tooltip label="Редактировать профиль">
+                        <div className={s.btnEdit} onClick={() => setIsEditProfile(true)}>
+                            <img className={s.editIcon} src={editIcon}/>
+                        </div>
+                    </Tooltip>
                 </div>
                 <div className={s.persanalInfo}>
                     <div className={s.photoBlock}>
@@ -103,6 +132,21 @@ export const PersonalAccount = () => {
                     </Table>
                 </div>
             </div>
+
+            <Modal
+                styles={{
+                    modal: { backgroundColor: '#1E1E1E', border: '1px solid #373737', color: '#BBBBBB' }
+                }}
+                overlayColor={true ? theme.colors.dark[9] : theme.colors.gray[2]}
+                overlayOpacity={0.55}
+                overlayBlur={10}
+                centered
+                opened={isEditProfile}
+                onClose={() => setIsEditProfile(false)}
+                title="Редактирование профиля"
+                size="55%">
+                <EditInfoUser Update={update} User={user} Delete={''}/>
+            </Modal>
         </div>
     )
 }

@@ -26,9 +26,14 @@
     transform: scale(0.95);
 }
 
-.outterContainerAdminPanel>div:nth-child(2){
+/* .outterContainerAdminPanel>div:nth-child(2){
     display: flex;
     flex-direction: column;
     align-items: center;
+} */
+
+.outterContainerAdminPanel{
+    margin: 0 auto;
+    width: 70%;
 }
 

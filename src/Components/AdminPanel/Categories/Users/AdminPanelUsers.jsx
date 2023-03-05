@@ -3,9 +3,11 @@ import s from './AdminPanelUsers.module.css';
 import { useDispatch } from 'react-redux';
 import { deleteInfoUser, getAllUsers, loadUsers } from "../../../../Redux/adminPanelSlice";
 import { useSelector } from 'react-redux';
-import { UserItem } from "./UserItem/UserItem";
 import { updateInfoUser } from './../../../../Redux/adminPanelSlice';
 import { SuccessNotification, UnsuccessNotification } from "../../../../Utils/Notifaction/Notifier";
+import { EditInfoUser } from "../../../Common/EditInfoUser/EditInfoUser";
+
+import { Accordion } from '@mantine/core';
 
 export const AdminPanelUsers = () => {
 
@@ -48,10 +50,46 @@ export const AdminPanelUsers = () => {
     }
     //#endregion
 
+
+    //#region Создаёт карточки для пользователей
+    const makeCardUser = () => {
+        let tmp = [];
+
+        users.forEach(element => {
+            tmp.push(
+                <Accordion key={element.id} chevronPosition="right" defaultValue="" transitionDuration={1000}
+                styles={{
+                    control: {
+                        '&:hover': {
+                            backgroundColor: 'transparent',
+                        }
+                    },
+
+                    chevron: {
+                        color: '#bbb',
+                    },
+                    label: {
+                        color: '#bbb',
+                    },
+                }}>
+                <Accordion.Item value="customization">
+                    <Accordion.Control>{`${element.name} ${element.surname} ${element.patronymic} ${element.snpassport}`}</Accordion.Control>
+                    <Accordion.Panel>
+                        <EditInfoUser Update={updateUserItem} User={element} Delete={deleteUserItem}/>
+                    </Accordion.Panel>
+                </Accordion.Item>
+            </Accordion>
+            );
+        });
+
+        return tmp;
+    }
+    //#endregion
+
     return(
         <div>
             {
-                users.map(item => <UserItem key={item.id} User={item} Update={updateUserItem} Delete={deleteUserItem}/>)
+                users.length > 0 ? makeCardUser() : ''
             }
         </div>
     )

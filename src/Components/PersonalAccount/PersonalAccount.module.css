@@ -11,7 +11,29 @@
 .titleBlock{
     font-size: 1.5em;
     margin: 1%;
+    display: flex;
+    align-items: center;
 }
+/**/
+.btnEdit{
+    width: 40px;
+    height: 40px;
+    margin-left: 1%;
+}
+
+.btnEdit:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+}
+.btnEdit:active{
+    transform: scale(0.95);
+}
+
+.editIcon{
+    width: 40px;
+    height: 40px;
+}
+/**/
 
 .infoPanel{
     margin: 1% 0;
@@ -59,3 +81,4 @@
 .notCompleate{
     color: #f08c00;
 }
+
