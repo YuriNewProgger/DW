@@ -73,6 +73,7 @@ export const PersonalAccount = () => {
         
     }, []);
 
+    //#region Обновляет информацию о пользователе
     const update = (value) => {
         dispatch(updateInfoUser(value)).unwrap().then(resp => {
             if(resp.status === 200){
@@ -85,6 +86,7 @@ export const PersonalAccount = () => {
             }
         })
     }
+    //#endregion
 
     return (
         <div className={s.outterContanerPersonalAccount}>
@@ -118,7 +120,7 @@ export const PersonalAccount = () => {
             <div className={s.infoPanel}>
                 <div className={s.titleBlock}>История</div>
                 <div className={s.tableOutterContainer}>
-                    <Table horizontalSpacing="xl" fontSize="1em">
+                    <Table horizontalSpacing="xl" fontSize="1em" withColumnBorders>
                       <thead>
                         <tr>
                           <th>Автомобиль</th>
