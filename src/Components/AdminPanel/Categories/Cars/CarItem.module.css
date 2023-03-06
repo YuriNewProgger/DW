@@ -15,3 +15,10 @@
     color: green;
     font-size: 1.3em;
 }
+
+.btnUploadPhoto{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}

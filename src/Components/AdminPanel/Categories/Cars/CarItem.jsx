@@ -49,10 +49,11 @@ export const CarItem = (props) => {
                     <Accordion.Panel>
                         <div className={s.innerContainer}>
                             <img src={_photo} style={{height:'250px'}}/>
-                            <CustomUploadFile TitlePhoto="" CbUploadImage={uploadImage}/>
+                            <div className={s.btnUploadPhoto}>
+                                <CustomUploadFile TitlePhoto="" CbUploadImage={uploadImage}/>
+                            </div>
                             <TextInput value={_title ?? " "} onChange={(e) => setTitle(e.currentTarget.value)} placeholder="Название" />
                             <TextInput value={_price ?? " "} onChange={(e) => setPrice(e.currentTarget.value)} placeholder="Цена" />
-                            {/* <Textarea value={_photo ?? " "} onChange={(e) => setPhoto(e.currentTarget.value)} placeholder="Фото" /> */}
                             <TextInput value={_discription ?? ""} onChange={(e) => setDiscription(e.currentTarget.value)} placeholder="Описание" />
                             <Select value={_type} data={_types} onChange={setType} />
                             <button className="btnCommon hoverElement activeElement" onClick={() => {
